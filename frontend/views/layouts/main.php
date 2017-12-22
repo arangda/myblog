@@ -44,10 +44,10 @@ AppAsset::register($this);
         $rightItems[] = ['label' => Yii::t('common','Login'), 'url' => ['/site/login']];
     } else {
         $rightItems[] = [
-		'label'=>'<img src="/statics/images/avatar/77.jpg" alt="'.Yii::$app->user->identity->username.'"/>',
+		'label'=>'<img src="'.Yii::$app->params['avatar']['small'].'" alt="'.Yii::$app->user->identity->username.'"/>',
         'linkOptions'=>['class'=>'avatar'],
 		'items'=>[
-			['label'=>'退出','url'=>['/site/logout'],'linkOptions'=>['data-method'=>'post']],
+			['label'=>'<i class="fa fa-sign-out"></i>退出','url'=>['/site/logout'],'linkOptions'=>['data-method'=>'post']],
 		],
 	];
     }
