@@ -13,7 +13,8 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
-
+	public $verifyCode;
+	public $rePassword;
 
     /**
      * @inheritdoc
@@ -23,17 +24,20 @@ class SignupForm extends Model
         return [
             ['username', 'trim'],
             ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\common\models\UserModel', 'message' => 'This username has already been taken.'],
+            ['username', 'unique', 'targetClass' => '\common\models\UserModel', 'message' => Yii::t('common','This username has already been taken.')],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['email', 'trim'],
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
-            ['email', 'unique', 'targetClass' => '\common\models\UserModel', 'message' => 'This email address has already been taken.'],
+            ['email', 'unique', 'targetClass' => '\common\models\UserModel', 'message' => Yii::t('common','This email address has already been taken.')],
 
-            ['password', 'required'],
-            ['password', 'string', 'min' => 6],
+            [['password','rePassword'], 'required'],
+            [['password','rePassword'], 'string', 'min' => 6],
+			['rePassword','compare','compareAttribute'=>'password','message'=>Yii::t('common','Two times the password is not consistent.')],
+			['verifyCode','captcha']
+			
         ];
     }
 	public function attributeLabels(){
@@ -41,6 +45,8 @@ class SignupForm extends Model
 			'username'=>'用户名',
 			'email'=>Yii::t('common','Email'),
 			'password'=>Yii::t('common','Password'),
+			'rePassword'=>'重复密码',
+			'verifyCode'=>'验证码',
 		];
 	}
     /**
