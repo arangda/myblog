@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		<div class="panel-body">
 			<?php $form = ActiveForm::begin()?>
 				<?=$form->field($model,'title')->textinput(['maxlength'=>true])?>
-				<?=$form->field($model,'cat_id')->dropDownList(['1'=>'分类1','2'=>'分类2'])?>
+				<?=$form->field($model,'cat_id')->dropDownList($cat)?>
 				<?=$form->field($model,'label_img')->textinput(['maxlength'=>true])?>
 				<?=$form->field($model,'content')->textinput(['maxlength'=>true])?>
 				<?=$form->field($model,'tags')->textinput(['maxlength'=>true])?>
