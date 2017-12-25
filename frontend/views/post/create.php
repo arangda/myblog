@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					'initialFrameHeight' => 850,
 					]
 				]) ?>
-				<?=$form->field($model,'tags')->textinput(['maxlength'=>true])?>
+				<?=$form->field($model,'tags')->widget('common\widgets\tags\TagWidget')?>
 			<div class="form-group">
 				<?=Html::submitButton('发布',['class'=>'btn btn-success'])?>
 			</div>
