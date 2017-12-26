@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				]) ?>
 				<?= $form->field($model, 'content')->widget('common\widgets\ueditor\Ueditor',[
 					'options'=>[
-					'initialFrameHeight' => 850,
+					'initialFrameHeight' => 450,
 					]
 				]) ?>
 				<?=$form->field($model,'tags')->widget('common\widgets\tags\TagWidget')?>

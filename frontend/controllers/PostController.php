@@ -49,6 +49,16 @@ class PostController extends BaseController
 		$model = new PostForm();
         //定义场景
         $model->setScenario(PostForm::SCENARIOS_CREATE);
+        
+        if($model->load(Yii::$app->request->post()) && $model->validate()){
+            
+            if(!$model->create()){
+               
+                Yii::$app->session->setFlash('warning',$model->_lastError);
+            }else{
+                return $this->redirect(['post/view','id'=>$model->id]);
+            }
+        }
         //获取所有分类
         $cat = CatModel::getAllCats();
 		return $this->render('create',['model'=>$model,'cat'=>$cat]);
