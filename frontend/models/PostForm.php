@@ -3,6 +3,9 @@ namespace frontend\models;
 use yii;
 use yii\base\Model;
 use common\models\PostModel;
+use yii\base\Object;
+use common\models\RelationPostTagModel;
+use yii\db\Query;
 /**
 *文章表单模型
 */
@@ -118,5 +121,33 @@ class PostForm extends Model
         
         //触发事件
         $this->trigger(self::EVENT_AFTER_CREATE);
+    }
+    /**
+    *添加标签
+    */
+    public function _eventAddTag($event)
+    {
+        $tag = new TagForm();
+        $tag->tags = $event->data['tags'];
+        $tagids = $tag->saveTags();
+        
+        //删除原先的关联关系
+        RelationPostTagModel::deleteAll(['post_id'=>$event->data['id']]);
+        
+        //批量保存文章和标签的关联关系
+        if(!empty($tagids)){
+            foreach($tagids as $k => $id){
+                $row[$k]['post_id'] = $this->id;
+                $row[$k]['tag_id'] = $id;
+            }
+            //批量插入
+            $res = (new Query())->createCommand()
+                ->batchInsert(RelationPostTagModel::tableName(),['post_id','tag_id'],$row)
+                ->execute();
+            //返回结果   
+            if(!$res)
+                throw new \Exception("关联关系保存失败!");
+        }
+        
     }
 }
