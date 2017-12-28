@@ -5,6 +5,7 @@ use frontend\models\PostForm;
 use common\models\CatModel;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use common\models\PostExtendModel;
 /**
 *文章控制器
 */
@@ -102,6 +103,9 @@ class PostController extends BaseController
 		$model = new PostForm();
 		$data = $model->getViewById($id);
 		
+        //文章统计
+        $model = new PostExtendModel();
+        $model->upCounter(['post_id'=>$id],'browser',1);
 		return $this->render('view',['data'=>$data]);
 	}
 }

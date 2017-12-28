@@ -34,6 +34,10 @@ Either GD PHP extension with FreeType support or ImageMagick PHP extension with 
 解决：extension=php_gd2.dll前面的;去掉 
 16.文章创建-分类 
 创建分类模型 ，获取分类数据 
-17. 图片上传组件 标签图实现 
-18. 富文本编辑器 Ueditor 内容实现
-19. a.获取文章数据 b.文章页面渲染
+17. 标签 
+18. 场景 
+19. a.create方法实现 b.文章内容截取方法实现 ，事务，事件 
+20. 添加事件，触发事件 
+21. 图片上传组件 标签图实现 
+22. 富文本编辑器 Ueditor 内容实现
+23. a.获取文章数据 b.文章页面渲染
