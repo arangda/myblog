@@ -92,5 +92,17 @@ class PostController extends BaseController
         $cat = CatModel::getAllCats();
 		return $this->render('create',['model'=>$model,'cat'=>$cat]);
 	}
+	
+	/**
+	* 文章详情
+	*/
+	
+	public function actionView($id)
+	{
+		$model = new PostForm();
+		$data = $model->getViewById($id);
+		
+		return $this->render('view',['data'=>$data]);
+	}
 }
 ?>

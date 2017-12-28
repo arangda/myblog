@@ -1,0 +1,39 @@
+基础教程
+配置环境变量 php.exe所在的目录
+init.bat 初始化 
+//http://frontend.yii2.com/ =>SQLSTATE[HY000][1049] Unknown database 'yii2advanced' 
+数据库创建 先创建数据库 然后 php yii migrate 生成user表
+路由配置 
+.htaccess去掉index.php 在frontend/main.php 中urlManage的注释去掉，美化url
+配置语言包 
+开启中文显示 'language'=>'zh-CN', 
+配置语言包 Yii::t(); 
+添加语言包文件
+独立用户系统 
+Class 'common\models\User' not found
+'encodeLabels'=>false
+form−>field(model, 'verifyCode')->widget(Captcha::className()) 
+use yii\captcha\Captcha;
+['rePassword','compare','compareAttribute'=>'password','message'=>Yii::t('common','Two times the password is not consistent.')], 
+9.创建文章控制器 UNIQUE KEY 'tag_name' ('tag_name') USING BTREE relation_post_tags和posts和tags都有
+yii\web\Controller\beforeAction
+使用GII创建文章数据模型（MODEL)和创建文章表单模型（Form)
+添加文章实现
+13.
+The file or directory to be published does not exist: G:\www\myblog/vendor\bower/jquery/dist
+ in G:\www\myblog\vendor\yiisoft\yii2\web\AssetManager.php
+安装执行composer global require "fxp/composer-asset-plugin:^1.3.1" 
+然后再执行composer update 
+14. composer version 1.5.6
+Installing Yii2: Invalid Parameter – yii\base\InvalidParamException
+The file or directory to be published does not exist: vendor/bower/jquery/dist
+解决:Inside vendor/bower folder its another one called bower-asset. Copy this folder content (some other folders named bootstrap, jquery, etc...) and move them to vender/bower.
+15.登录后台报错 common/config/main-local.php重新设置数据库 
+前台报错 404 apache配置中AllowOverride none改为 AllowOverride All 
+Either GD PHP extension with FreeType support or ImageMagick PHP extension with PNG support is required. 
+解决：extension=php_gd2.dll前面的;去掉 
+16.文章创建-分类 
+创建分类模型 ，获取分类数据 
+17. 图片上传组件 标签图实现 
+18. 富文本编辑器 Ueditor 内容实现
+19. a.获取文章数据 b.文章页面渲染

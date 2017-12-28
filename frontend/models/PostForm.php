@@ -6,6 +6,7 @@ use common\models\PostModel;
 use yii\base\Object;
 use common\models\RelationPostTagModel;
 use yii\db\Query;
+
 /**
 *文章表单模型
 */
@@ -102,6 +103,24 @@ class PostForm extends Model
             return false;
         }
     }
+	
+	public function getViewById($id)
+	{
+		$res = PostModel::find()->with('relate.tag')->where(['id'=>$id])->asArray()->one();
+		if(!$res){
+			throw new NotFoundHttpException('文章不存在！');
+		}
+		//print_r($res);die();
+		//处理标签格式
+		$res['tags'] = [];
+		if(isset($res['relate']) && !empty($res['relate'])){
+			foreach($res['relate'] as $list){
+				$res['tags'][] = $list['tag']['tag_name'];
+			}
+		}
+		unset($res['relate']);
+		return $res;
+	}
     /**
     *  获取文章摘要
     */
