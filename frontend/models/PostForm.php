@@ -69,6 +69,41 @@ class PostForm extends Model
 			'cat_id'=>'分类',
 		];
 	}
+	public static function getList($cond,$curPage = 1,$pageSize = 5,$orderBy = ['id'=>SORT_DESC])
+	{
+		$model = new PostModel();
+		//查询语句
+		$select = ['id','title','summary','label_img','cat_id','user_id','user_name','is_valid','created_at','updated_at'];
+		$query = $model->find()
+				->select($select)
+				->where($cond)
+				->with('relate.tag','extend')
+				->orderBy($orderBy);
+		//获取分页数据		
+		$res = $model->getPages($query,$curPage,$pageSize);
+		//格式化
+		$res['data'] = self::_formatList($res['data']);
+		return $res;
+	}
+	
+	/**
+	*	数据格式化
+	*/
+	public static function _formatList($data)
+	{
+		foreach($data as &$list){
+			$list['tags'] = [];
+			if(isset($list['relate']) && !empty($list['relate'])){
+				foreach($list['relate'] as $lt){
+					$list['tags'][] = $lt['tag']['tag_name'];
+				}
+			}
+			unset($list['relate']);
+		}
+		return $data;
+	}
+	
+	
     public function create()
     {
          
@@ -106,7 +141,7 @@ class PostForm extends Model
 	
 	public function getViewById($id)
 	{
-		$res = PostModel::find()->with('relate.tag','extend')->where(['id'=>$id])->asArray()->one();
+		$res = PostModel::find()->with('relate.tag')->where(['id'=>$id])->asArray()->one();
 		if(!$res){
 			throw new NotFoundHttpException('文章不存在！');
 		}
