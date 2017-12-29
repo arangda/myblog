@@ -118,7 +118,10 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
-
+.navbar-right li a.avatar{
+    padding-top:10px;
+    padding-bottom:5px;
+}
 .navbar-right li a.avatar img{
 	border:#ccc solid 1px;
 	width:32px;
@@ -143,11 +146,12 @@ a.desc:after {
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
 	color:#fff;
 }
-
+.panel-title{border-bottom:1px solid #ccc;padding:10px 0;}
+.panel-title{} 
 .panel-body h1 {
     font-size: 18px;
-    height: 30px;
-    line-height: 30px;
+    height: 40px;
+    line-height: 40px;
     margin: 0;
     overflow: hidden;
 }
@@ -191,5 +195,5 @@ a.desc:after {
 }
 
 .font-12 {
-    font-size: 12px;
+    font-size: 14px;
 }

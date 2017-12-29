@@ -36,7 +36,7 @@ class PostController extends BaseController
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    '*'=>['get'],
+                    '*'=>['get','post'],
                     'create' => ['get','post'],
                 ],
             ],

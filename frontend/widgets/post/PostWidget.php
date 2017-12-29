@@ -8,6 +8,7 @@ use yii\helpers\Url;
 use yii\base\Widget;
 use common\models\PostModel;
 use frontend\models\PostForm;
+use yii\data\Pagination;
 class PostWidget extends Widget
 {
 	/**
@@ -17,7 +18,7 @@ class PostWidget extends Widget
 	/**
 	*显示条数
 	*/
-	public $limit = 6;
+	public $limit = 5;
 	/**
 	*是否显示更多
 	*/
@@ -25,7 +26,7 @@ class PostWidget extends Widget
 	/**
 	*是否显示分页
 	*/
-	public $page = false;
+	public $page = true;
 	
 	public function run()
 	{
@@ -38,7 +39,7 @@ class PostWidget extends Widget
 		$result['body'] = $res['data']?:[];
 		//是否显示分页
 		if($this->page){
-			$pages = new Pagination(['totalCount'=>$res['count'],'pageSize'=>$res['pagesize']]);
+			$pages = new Pagination(['totalCount'=>$res['count'],'pageSize'=>$res['pageSize']]);
 			$result['page'] = $pages;
 		}
 		return $this->render('index',['data'=>$result]);

@@ -69,7 +69,7 @@ class PostForm extends Model
 			'cat_id'=>'分类',
 		];
 	}
-	public static function getList($cond,$curPage = 1,$pageSize = 5,$orderBy = ['id'=>SORT_DESC])
+	public static function getList($cond,$curPage = 1,$pageSize = 10,$orderBy = ['id'=>SORT_DESC])
 	{
 		$model = new PostModel();
 		//查询语句
