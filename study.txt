@@ -45,3 +45,7 @@ Either GD PHP extension with FreeType support or ImageMagick PHP extension with 
 25. 留言板组件
 26. 热门浏览文章组件
 27.标签云组件
+28 后台登录，布局，用户管理，内容管理
+29. 工具的使用：gii  扩展的使用：如编辑器扩展
+30. 框架的应用：场景应用，事件，rule规则，挂件
+31.核心思想：快速开发，避免重复劳动力，提升代码复用率

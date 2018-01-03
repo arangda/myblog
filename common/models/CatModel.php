@@ -37,7 +37,7 @@ class CatModel extends BaseModel
     {
         return [
             'id' => 'ID',
-            'cat_name' => 'Cat Name',
+            'cat_name' => '分类',
         ];
     }
     /**
