@@ -1,4 +1,7 @@
 <?php
+use frontend\widgets\chat\ChatWidget;
+use frontend\widgets\hot\HotWidget;
+use frontend\widgets\tag\TagWidget;
 $this->title = $data['title'];
 $this->params['breadcrumbs'][] = ['label'=>'文章','url'=>['post/index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -20,7 +23,13 @@ $this->params['breadcrumbs'][] = $this->title;
 		</div>
 	</div>
 	<div class="col-lg-3">
-	
+        <!--留言板
+		<?=ChatWidget::widget()?>
+		-->
+        <!--热门浏览-->
+        <?=HotWidget::widget()?>
+        <!--标签云-->
+        <?=TagWidget::widget()?>
 	</div>
 
 </div>
