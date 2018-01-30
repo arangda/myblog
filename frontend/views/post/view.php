@@ -2,6 +2,8 @@
 use frontend\widgets\chat\ChatWidget;
 use frontend\widgets\hot\HotWidget;
 use frontend\widgets\tag\TagWidget;
+use yii\helpers\Markdown;
+use yii\helpers\Html;
 $this->title = $data['title'];
 $this->params['breadcrumbs'][] = ['label'=>'文章','url'=>['post/index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -14,13 +16,22 @@ $this->params['breadcrumbs'][] = $this->title;
 			<span>发布：<?= date('Y-m-d',$data['created_at']); ?></span>
 			<span>浏览：<?= isset($data['extend']['browser'])?$data['extend']['browser']:0 ?>次</span>
 		</div>
-		<?= $data['content']?>
+		<?= $content = Markdown::process($data['content'],'gfm');?>
 		<div class="page-tag">
 			标签:
 			<?php foreach ($data['tags'] as $tag): ?>
 				<span><a href="#"><?=$tag?></a></span>
 			<?php endforeach; ?>
 		</div>
+        <p>
+            <?= Html::a('删除',['delete','id'=>$data['id']],['class'=>'btn btn-danger',
+                'data'=>[
+                    'confirm'=>'确定要删除这篇文章吗',
+                    'method'=>'post',
+                ],
+                ])?>
+            <?= Html::a('编辑',['update','id'=>$data['id']],['class'=>'btn btn-primary'])?>
+        </p>
 	</div>
 	<div class="col-lg-3">
         <!--留言板

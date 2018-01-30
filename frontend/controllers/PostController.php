@@ -6,6 +6,7 @@ use common\models\CatModel;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\PostExtendModel;
+use common\models\PostModel;
 /**
 *文章控制器
 */
@@ -102,11 +103,51 @@ class PostController extends BaseController
 	{
 		$model = new PostForm();
 		$data = $model->getViewById($id);
-		
         //文章统计
         $model = new PostExtendModel();
         $model->upCounter(['post_id'=>$id],'browser',1);
 		return $this->render('view',['data'=>$data]);
 	}
+
+    /**
+     * 更新文章
+     * @param $id
+     * @return string
+     */
+	public function actionUpdate($id)
+    {
+        $model = new PostForm();
+        //定义场景
+        $model->setScenario(PostForm::SCENARIOS_UPDATE);
+        $data = $model->getViewById($id);
+        if($model->load(Yii::$app->request->post()) && $model->validate()){
+
+            if(!$model->update()){
+
+                Yii::$app->session->setFlash('warning',$model->_lastError);
+            }else{
+                return $this->redirect(['post/view','id'=>$model->id]);
+            }
+        }
+        //获取所有分类
+        $cat = CatModel::getAllCats();
+        return $this->render('update',['model'=>$model,'cat'=>$cat,'data'=>$data]);
+    }
+
+    /**
+     * 删除文章
+     *
+     */
+    public function actionDelete($id)
+    {
+        $model = new PostForm();
+        if(!$model->delete()){
+            Yii::$app->session->setFlash('warning',$model->_lastError);
+        }else {
+            return $this->redirect(['index']);
+        }
+    }
+
+
 }
 ?>

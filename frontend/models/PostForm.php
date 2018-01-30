@@ -138,7 +138,45 @@ class PostForm extends Model
             return false;
         }
     }
-	
+    public function update()
+    {
+
+        //事务
+        $transaction = Yii::$app->db->beginTransaction();
+
+        try{
+
+            $model = new PostModel();
+            $model->setAttributes($this->attributes);
+            $model->summary = $this->_getSummary();
+            $model->user_id = Yii::$app->user->identity->id;
+            $model->user_name = Yii::$app->user->identity->username;
+            $model->is_valid = PostModel::IS_VALID;
+            $model->created_at = time();
+            $model->updated_at = time();
+
+            if(!$model->save())
+                throw new \Exception('文章保存失败');
+
+            $this->id = $model->id;
+
+            //调用事件
+            $data = array_merge($this->getAttributes(),$model->getAttributes());
+            $this->_evenAfterCreate($data);
+
+            $transaction->commit();
+            return true;
+        }catch(\Exception $e){
+            $transaction->rollBack();
+            $this->_lastError = $e->getMessage();
+            return false;
+        }
+    }
+
+    public function delete(){
+        $model = new PostModel();
+	    print_r(['a'=>$model->id]);
+    }
 	public function getViewById($id)
 	{
 		$res = PostModel::find()->with('relate.tag')->where(['id'=>$id])->asArray()->one();

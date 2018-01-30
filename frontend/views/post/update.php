@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = '创建';
+$this->title = '更新';
 $this->params['breadcrumbs'][] = ['label'=>'文章','url'=>['post/index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -10,20 +10,23 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="row">
 	<div class="col-lg-9">
 		<div class="panel-title box-title">
-			<span>创建文章</span>
+			<span>更新文章</span>
 		</div>
 		<div class="panel-body">
 			<?php $form = ActiveForm::begin()?>
-				<?=$form->field($model,'title')->textinput(['maxlength'=>true])?>
-				<?=$form->field($model,'cat_id')->dropDownList($cat)?>
+				<?=$form->field($model,'title')->textinput(['maxlength'=>true,'value'=>$data['title']])?>
+				<?php $model->cat_id = $data['cat_id'] ?>
+                <?= $form->field($model,'cat_id')->dropDownList($cat)?>
 				 <?= $form->field($model,'label_img')->widget('common\widgets\file_upload\FileUpload',[
 					'config'=>[
 					]
 				]) ?>
+                <?php $model->content = $data['content']?>
 				<?= $form->field($model, 'content')->widget('yidashi\markdown\Markdown',['language'=>'zh']) ?>
-				<?=$form->field($model,'tags')->widget('common\widgets\tags\TagWidget')?>
+                <?php $model->content = $data['tags']?>
+                <?=$form->field($model,'tags')->widget('common\widgets\tags\TagWidget')?>
 			<div class="form-group">
-				<?=Html::submitButton('发布',['class'=>'btn btn-success'])?>
+				<?=Html::submitButton('更新',['class'=>'btn btn-success'])?>
 			</div>
 			<?php ActiveForm::end()?>
 		</div>
