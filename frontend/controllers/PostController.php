@@ -120,6 +120,7 @@ class PostController extends BaseController
         //定义场景
         $model->setScenario(PostForm::SCENARIOS_UPDATE);
         $data = $model->getViewById($id);
+
         if($model->load(Yii::$app->request->post()) && $model->validate()){
 
             if(!$model->update()){
@@ -141,7 +142,7 @@ class PostController extends BaseController
     public function actionDelete($id)
     {
         $model = new PostForm();
-        if(!$model->delete()){
+        if(!$model->delete($id)){
             Yii::$app->session->setFlash('warning',$model->_lastError);
         }else {
             return $this->redirect(['index']);

@@ -51,6 +51,30 @@ class TagForm extends Model
         
         return $res->id;
     }
+
+    /**
+     * 删除标签集合
+     */
+    public function delTags()
+    {
+        if(!empty($this->tags)){
+            foreach($this->tags as $tag){
+                $this->_delTag($tag);
+            }
+        }
+    }
+
+    public function _delTag($tag)
+    {
+        $model = new TagModel();
+        $res = $model->find()->where(['tag_name'=>$tag])->one();
+        $pn = $model->find()->where(['tag_name'=>$tag])->asArray()->one();
+        if($pn['post_num']>1){
+            $res->updateCounters(['post_num'=>-1]);
+        }else{
+            $res->delete();
+        }
+    }
 }
 
 

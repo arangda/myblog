@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				]) ?>
                 <?php $model->content = $data['content']?>
 				<?= $form->field($model, 'content')->widget('yidashi\markdown\Markdown',['language'=>'zh']) ?>
-                <?php $model->content = $data['tags']?>
+                <?php $model->tags = $data['tags']?>
                 <?=$form->field($model,'tags')->widget('common\widgets\tags\TagWidget')?>
 			<div class="form-group">
 				<?=Html::submitButton('更新',['class'=>'btn btn-success'])?>

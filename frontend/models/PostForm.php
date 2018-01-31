@@ -36,7 +36,7 @@ class PostForm extends Model
     */
     const EVENT_AFTER_CREATE ='eventAfterCreare';
     const EVENT_AFTER_UPDATE ='eventAfterUpdate';
-    
+    const EVENT_AFTER_DELETE ='eventAfterDelete';
     
     /**
     *   场景设置
@@ -173,10 +173,25 @@ class PostForm extends Model
         }
     }
 
-    public function delete(){
+    public function delete($id)
+    {
         $model = new PostModel();
-	    print_r(['a'=>$model->id]);
+        $data = $this->getViewById($id);
+        //print_r($data);die();
+        $tags = $data['tags'];
+        $res = $model->findOne($id)->delete();
+        $this->_eventDelTag($tags);
+        RelationPostTagModel::deleteAll(['post_id'=>$id]);
+        return $res;
     }
+
+    public function _eventDelTag($tags)
+    {
+        $tag = new TagForm();
+        $tag->tags = $tags;
+        $tag->delTags();
+    }
+
 	public function getViewById($id)
 	{
 		$res = PostModel::find()->with('relate.tag')->where(['id'=>$id])->asArray()->one();
@@ -214,6 +229,8 @@ class PostForm extends Model
         //触发事件
         $this->trigger(self::EVENT_AFTER_CREATE);
     }
+
+
     /**
     *添加标签
     */
