@@ -103,6 +103,14 @@ class PostController extends BaseController
 	{
 		$model = new PostForm();
 		$data = $model->getViewById($id);
+		if(Yii::$app->user->isGuest){
+		    $data['handle'] = false;
+        }else{
+            $tid = Yii::$app->user->identity->getId();
+            $aid = $data['user_id'];
+            $data['handle'] = ($tid===$aid)?true:false;
+        }
+
         //文章统计
         $model = new PostExtendModel();
         $model->upCounter(['post_id'=>$id],'browser',1);

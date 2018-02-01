@@ -35,7 +35,8 @@ class PostWidget extends Widget
 		$cond = ['=','is_valid',PostModel::IS_VALID];
 		$res = PostForm::getList($cond,$curPage,$this->limit);
 		$result['title'] = $this->title?:"最新文章";
-		$result['more'] = Url::to(['post/index']);
+		$result['handle'] = Yii::$app->user->isGuest?false:true;
+		$result['add'] = Url::to(['post/create']);
 		$result['body'] = $res['data']?:[];
 		//是否显示分页
 		if($this->page){

@@ -6,8 +6,8 @@ use yii\widgets\LinkPager;
 <div class="panel">
     <div class="panel-title box-title">
         <span class="h4"><?=$data['title']?></span>
-        <?php if($this->context->more):?>
-        <span class="pull-right"><a href="<?=$data['more']?>" class="font-12">更多»</a></span>
+        <?php if($data['handle']):?>
+        <span class="pull-right"><a href="<?=$data['add']?>" class="btn btn-primary">添加文章</a></span>
         <?php endif;?>
     </div>
     <div class="new-list">

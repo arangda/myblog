@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<span><a href="#"><?=$tag?></a></span>
 			<?php endforeach; ?>
 		</div>
+        <?php if($data['handle']): ?>
         <p>
             <?= Html::a('删除',['delete','id'=>$data['id']],['class'=>'btn btn-danger',
                 'data'=>[
@@ -32,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ])?>
             <?= Html::a('编辑',['update','id'=>$data['id']],['class'=>'btn btn-primary'])?>
         </p>
+        <?php endif ?>
 	</div>
 	<div class="col-lg-3">
         <!--留言板

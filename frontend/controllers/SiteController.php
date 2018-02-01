@@ -19,6 +19,7 @@ use frontend\controllers\base\BaseController;
  */
 class SiteController extends BaseController
 {
+
     /**
      * @inheritdoc
      */
