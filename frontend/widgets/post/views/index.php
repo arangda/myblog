@@ -19,6 +19,7 @@ use yii\widgets\LinkPager;
                     <span class="post-tags">
                         <span class="glyphicon glyphicon-user"></span><a href="<?=Url::to(['member/index','id'=>$list['user_id']])?>"><?=$list['user_name']?></a>&nbsp;
                         <span class="glyphicon glyphicon-time"></span><?=date('Y-m-d',$list['created_at'])?>&nbsp;
+                        <span class="glyphicon glyphicon-folder-open"></span><?=isset($list['cat']['cat_name'])?$list['cat']['cat_name']:0?>&nbsp;
                         <span class="glyphicon glyphicon-eye-open"></span><?=isset($list['extend']['browser'])?$list['extend']['browser']:0?>&nbsp;
                         <span class="glyphicon glyphicon-comment"></span><a href="<?=Url::to(['post/detail','id'=>$list['id']])?>"><?=isset($list['extend']['comment'])?$list['extend']['comment']:0?></a>
                     </span>

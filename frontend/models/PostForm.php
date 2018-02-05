@@ -77,7 +77,7 @@ class PostForm extends Model
 		$query = $model->find()
 				->select($select)
 				->where($cond)
-				->with('relate.tag','extend')
+				->with('relate.tag','extend','cat')
 				->orderBy($orderBy);
 		//获取分页数据		
 		$res = $model->getPages($query,$curPage,$pageSize);
@@ -202,7 +202,7 @@ class PostForm extends Model
 
 	public function getViewById($id)
 	{
-		$res = PostModel::find()->with('relate.tag')->where(['id'=>$id])->asArray()->one();
+		$res = PostModel::find()->with('relate.tag')->with('cat')->with('extend')->where(['id'=>$id])->asArray()->one();
 		if(!$res){
 			throw new NotFoundHttpException('文章不存在！');
 		}

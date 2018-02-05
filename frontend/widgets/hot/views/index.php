@@ -10,7 +10,7 @@ use yii\helpers\Url;
         <?php foreach ($data['body'] as $list):?>
         <div class="clearfix hot-list">
             <div class="pull-left media-left">
-                <a href="#">浏览<em><?=$list['browser']?></em></a>
+                <span class="glyphicon glyphicon-eye-open"><em class="read"><?=$list['browser']?></em></span>
             </div>
             <div class="media-right">
                 <a href="<?=Url::to(['post/view','id'=>$list['id']])?>"><?=$list['title']?></a>

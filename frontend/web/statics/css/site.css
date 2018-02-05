@@ -146,8 +146,9 @@ a.desc:after {
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
 	color:#fff;
 }
-.panel-title{border-bottom:1px solid #ccc;padding:10px 0;}
-.panel-title{} 
+.panel-title{border-bottom:1px solid #ccc;padding-bottom:10px;overflow:hidden;}
+.panel-title .h4{height:22px;display:block;float:left;}
+.panel-title .pull-right{margin-right:10px;}
 .panel-body h1 {
     font-size: 18px;
     height: 40px;
@@ -155,7 +156,7 @@ a.desc:after {
     margin: 0;
     overflow: hidden;
 }
-
+.new-list .panel-body{border-bottom:1px dashed #cccccc;}
 .post-label {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -188,7 +189,12 @@ a.desc:after {
 .post-tags a {
     color: #999;
 }
-
+.post-tags .glyphicon{
+    margin-left:5px;
+}
+.post-content{
+    padding:5px 0;
+}
 .tags {
     font-size: 12px;
     margin-left: 2px;
@@ -200,34 +206,22 @@ a.desc:after {
 
 
 .hot-list .media-left a{
-	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+
     font-size: 12px;
     line-height: 22px;
-    background: #5cb85c;
-    width: 45px;
+    width: 25px;
     display: block;
-    height: 48px;
     text-align: center;
-    color: #fff;
     text-decoration: none;
+    background:#c8eef3;
 }
 
-.media-left em {
-	font-size: 14px;
-    font-weight: 500;
-    background: #fff;
-    display: block;
-    line-height: 26px;
-	color: #333;
-    font-style: normal;
-}
 
 .hot-list {
 	padding-bottom:10px;
-	border-bottom:1px solid #ccc;
 	margin-bottom:10px;
 }
-
+.hot-list .read{padding-left:3px;}
 .media-right {
 	line-height:24px;
 }
@@ -237,6 +231,7 @@ a.desc:after {
 }
 
 /**/
+.padding-left-0{padding-left:0;}
 .tag-cloud a {
 	border: 1px solid #ebebeb;
     padding: 2px 7px;
@@ -252,3 +247,17 @@ a.desc:after {
 	background-color:#5bc0de;
 	text-decoration: none;
 }
+
+.cat_list a{
+    display: block;
+}
+.cat_list a em{margin-left:15px;}
+/*文章页样式*/
+
+.page-title{border-bottom: 1px solid #d3d3d3;padding-bottom:5px;}
+.page-addtion{border-bottom: 1px solid #d3d3d3;padding:5px;}
+.page-addtion span{padding:0 15px;display:inline-block;position:relative;color:#111111;}
+.page-addtion span:after{content:"--";display:block;position:absolute;left:0;top:0;}
+.page-content{padding:10px;font-size:16px;}
+.page-tag{padding:5px;border-top:1px solid #d3d3d3;border-bottom:1px solid #d3d3d3;}
+.page-handle{padding-top:10px;}

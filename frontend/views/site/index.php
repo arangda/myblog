@@ -4,6 +4,7 @@ use frontend\widgets\post\PostWidget;
 use frontend\widgets\chat\ChatWidget;
 use frontend\widgets\hot\HotWidget;
 use frontend\widgets\tag\TagWidget;
+use frontend\widgets\classify\ClassifyWidget;
 use yii\base\Widget;
 /* @var $this yii\web\View */
 
@@ -19,6 +20,8 @@ $this->title = '博客-首页';
 		<!--留言板
 		<?=ChatWidget::widget()?>
 		-->
+        <!--分类-->
+        <?=ClassifyWidget::widget()?>
 		<!--热门浏览-->
 		<?=HotWidget::widget()?>
 		<!--标签云-->
