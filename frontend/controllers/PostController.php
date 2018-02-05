@@ -125,17 +125,17 @@ class PostController extends BaseController
 	public function actionUpdate($id)
     {
         $model = new PostForm();
+
         //定义场景
         $model->setScenario(PostForm::SCENARIOS_UPDATE);
         $data = $model->getViewById($id);
 
         if($model->load(Yii::$app->request->post()) && $model->validate()){
-
-            if(!$model->update()){
+            if(!$model->update($id)){
 
                 Yii::$app->session->setFlash('warning',$model->_lastError);
             }else{
-                return $this->redirect(['post/view','id'=>$model->id]);
+                return $this->redirect(['post/view','id'=>$id]);
             }
         }
         //获取所有分类

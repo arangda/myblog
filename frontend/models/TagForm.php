@@ -21,19 +21,23 @@ class TagForm extends Model
         ];
     }
     //保存标签集合
-    public function saveTags()
+    public function saveTags($action)
     {
+        if($action=='update'){
+            print_r($this->id);die();
+            $this->delTags();
+        }
         $ids = [];
         if(!empty($this->tags)){
             foreach($this->tags as $tag){
-                $ids[] = $this->_saveTag($tag);
+                $ids[] = $this->_saveTag($tag,$action);
             }
         }
         
         return $ids;
     }
     
-    private function _saveTag($tag)
+    private function _saveTag($tag,$action)
     {
         $model = new TagModel();
         $res = $model->find()->where(['tag_name'=>$tag])->one();
@@ -46,6 +50,7 @@ class TagForm extends Model
             }
             return $model->id;
         }else{
+
             $res->updateCounters(['post_num' => 1]);
         }
         

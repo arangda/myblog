@@ -138,32 +138,33 @@ class PostForm extends Model
             return false;
         }
     }
-    public function update()
+    public function update($id)
     {
-
+        $res = PostModel::find()
+            ->select('*')
+            ->where(['id'=>$id])
+            ->with('relate.tag')
+            ->limit(1)
+            ->asArray()
+            ->one();
+        foreach($res['relate'] as $r){
+            $tags[] = $r['tag']['tag_name'];
+        }
+        $this->_eventDelTag($tags);
+        $model = $this->findModel($id);
         //事务
         $transaction = Yii::$app->db->beginTransaction();
 
         try{
-
-            $model = new PostModel();
             $model->setAttributes($this->attributes);
             $model->summary = $this->_getSummary();
-            $model->user_id = Yii::$app->user->identity->id;
-            $model->user_name = Yii::$app->user->identity->username;
-            $model->is_valid = PostModel::IS_VALID;
-            $model->created_at = time();
             $model->updated_at = time();
-
             if(!$model->save())
                 throw new \Exception('文章保存失败');
-
             $this->id = $model->id;
-
             //调用事件
             $data = array_merge($this->getAttributes(),$model->getAttributes());
             $this->_evenAfterCreate($data);
-
             $transaction->commit();
             return true;
         }catch(\Exception $e){
@@ -172,7 +173,14 @@ class PostForm extends Model
             return false;
         }
     }
+    protected function findModel($id)
+    {
+        if (($model = PostModel::findOne($id)) !== null) {
+            return $model;
+        }
 
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
     public function delete($id)
     {
         $model = new PostModel();
@@ -198,7 +206,7 @@ class PostForm extends Model
 		if(!$res){
 			throw new NotFoundHttpException('文章不存在！');
 		}
-		//print_r($res);die();
+
 		//处理标签格式
 		$res['tags'] = [];
 		if(isset($res['relate']) && !empty($res['relate'])){
@@ -238,7 +246,7 @@ class PostForm extends Model
     {
         $tag = new TagForm();
         $tag->tags = $event->data['tags'];
-        $tagids = $tag->saveTags();
+        $tagids = $tag->saveTags($event->data);
         
         //删除原先的关联关系
         RelationPostTagModel::deleteAll(['post_id'=>$event->data['id']]);
