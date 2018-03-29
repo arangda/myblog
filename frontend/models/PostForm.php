@@ -148,9 +148,9 @@ class PostForm extends Model
             ->asArray()
             ->one();
         foreach($res['relate'] as $r){
-            $tags[] = $r['tag']['tag_name'];
+            $this->tags[] = $r['tag']['tag_name'];
         }
-        $this->_eventDelTag($tags);
+        $this->_eventDelTag($this->tags);
         $model = $this->findModel($id);
         //事务
         $transaction = Yii::$app->db->beginTransaction();
