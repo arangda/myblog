@@ -18,7 +18,7 @@ class PostForm extends Model
 	public $label_img;
 	public $cat_id;
 	public $tags;
-	
+	public $oldTags;
 	public $_lastError = "";
     
     /**
@@ -106,7 +106,7 @@ class PostForm extends Model
 	
     public function create()
     {
-         
+
         //事务
         $transaction = Yii::$app->db->beginTransaction();
         
@@ -140,6 +140,7 @@ class PostForm extends Model
     }
     public function update($id)
     {
+
         $res = PostModel::find()
             ->select('*')
             ->where(['id'=>$id])
@@ -148,9 +149,10 @@ class PostForm extends Model
             ->asArray()
             ->one();
         foreach($res['relate'] as $r){
-            $this->tags[] = $r['tag']['tag_name'];
+            $this->oldTags[] = $r['tag']['tag_name'];
         }
-        $this->_eventDelTag($this->tags);
+
+        $this->_eventDelTag($this->oldTags);
         $model = $this->findModel($id);
         //事务
         $transaction = Yii::$app->db->beginTransaction();

@@ -108,7 +108,7 @@ class PostController extends BaseController
         }else{
             $tid = Yii::$app->user->identity->getId();
             $aid = $data['user_id'];
-            $data['handle'] = ($tid===$aid)?true:false;
+            $data['handle'] = ($tid==$aid)?true:false;
         }
 
         //文章统计

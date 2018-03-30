@@ -24,7 +24,6 @@ class TagForm extends Model
     public function saveTags($action)
     {
         if($action=='update'){
-            print_r($this->id);die();
             $this->delTags();
         }
         $ids = [];
