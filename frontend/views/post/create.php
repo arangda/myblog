@@ -5,6 +5,11 @@ use yii\bootstrap\ActiveForm;
 $this->title = '创建';
 $this->params['breadcrumbs'][] = ['label'=>'文章','url'=>['post/index']];
 $this->params['breadcrumbs'][] = $this->title;
+
+use ijackua\lepture\Markdowneditor;
+use ijackua\lepture\MarkdowneditorAssets;
+
+MarkdowneditorAssets::register($this);
 ?>
 
 <div class="row">
@@ -20,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					'config'=>[
 					]
 				]) ?>
-				<?= $form->field($model, 'content')->widget('yidashi\markdown\Markdown',['language'=>'zh']) ?>
+                <?= Markdowneditor::widget(['model' => $model, 'attribute' => 'content']); ?>
 				<?=$form->field($model,'tags')->widget('common\widgets\tags\TagWidget')?>
 			<div class="form-group">
 				<?=Html::submitButton('发布',['class'=>'btn btn-success'])?>
