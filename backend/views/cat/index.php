@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
             'id',
             'cat_name',
+            'sortrank',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

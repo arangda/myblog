@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model common\models\CatModel */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Cat Models', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '分类', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cat-model-view">
@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'cat_name',
+            'sortrank'
         ],
     ]) ?>
 

@@ -4,12 +4,6 @@ use yii\helpers\Url;
 use yii\widgets\LinkPager;
 ?>
 <div class="panel">
-    <div class="panel-title box-title">
-        <span class="h4"><?=$data['title']?></span>
-        <?php if($data['handle']):?>
-        <span class="pull-right"><a href="<?=$data['add']?>" class="btn btn-primary">添加文章</a></span>
-        <?php endif;?>
-    </div>
     <div class="new-list">
     <?php foreach ($data['body'] as $list):?>
         <div class="panel-body border-bottom">      

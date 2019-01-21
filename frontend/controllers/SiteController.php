@@ -1,6 +1,8 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\CatModel;
+use common\models\ShareUrls;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -74,7 +76,18 @@ class SiteController extends BaseController
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $handle = Yii::$app->user->isGuest?false:true;
+
+        $cats = CatModel::getAllCats();
+        $res = array();
+        foreach ($cats as $k => $v){
+            $res[$v] = ShareUrls::find()->where(['cat_id'=>$k])->asArray()->all();
+        }
+        print_r($res);
+        return $this->render('index',[
+                'handle' => $handle,
+                'data' => $res
+            ]);
     }
 
     /**

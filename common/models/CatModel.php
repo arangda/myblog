@@ -9,6 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property string $cat_name
+ * @property int $sortrank
  */
 class CatModel extends BaseModel
 {
@@ -26,6 +27,7 @@ class CatModel extends BaseModel
     public function rules()
     {
         return [
+            [['sortrank'], 'integer'],
             [['cat_name'], 'string', 'max' => 255],
         ];
     }
@@ -38,6 +40,7 @@ class CatModel extends BaseModel
         return [
             'id' => 'ID',
             'cat_name' => '分类',
+            'sortrank' => '排序',
         ];
     }
     /**
@@ -45,8 +48,8 @@ class CatModel extends BaseModel
     */
     public static function getAllCats()
     {
-        $cat = ['0'=>'暂无分类'];
-        $res = self::find()->asArray()->all();
+
+        $res = self::find()->orderBy('sortrank ASC')->asArray()->all();
         if($res){
             foreach($res as $key => $list){
                 $cat[$list['id']] = $list['cat_name'];

@@ -127,6 +127,19 @@ a.desc:after {
 	width:32px;
 	height:32px;
 }
+.navbar-inverse{background:#337ab7 !important;
+    border-color:#337ab7 !important;}
+.navbar-header{background:#337ab7;}
+.navbar-brand{color:#fff !important;}
+.navbar-toggle{border-color:#fff !important;}
+.navbar-toggle:focus{background:#337ab7 !important;}
+.navbar-toggle:hover{background:#337ab7 !important;}
+.navbar-collapse{border-color:#428ed0 !important;}
+.navbar-collapse .active a{background:#337ab7 !important;}
+.dropdown-toggle{background:#337ab7 !important;}
+.dropdown-menu{background:#337ab7 !important;}
+.dropdown-menu li a:hover{background:#337ab7 !important;}
+.navbar-nav a{color:#fff !important;}
 .select2-container--default .select2-selection--multiple {
     background-color: white;
     border: 1px solid #aaa;
@@ -261,3 +274,7 @@ a.desc:after {
 .page-content{padding:10px;font-size:16px;}
 .page-tag{padding:5px;border-top:1px solid #d3d3d3;border-bottom:1px solid #d3d3d3;}
 .page-handle{padding-top:10px;}
+
+
+/*首页*/
+.badge{background-color:#ec971f !important;}
