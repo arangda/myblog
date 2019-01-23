@@ -68,9 +68,31 @@ class PostController extends BaseController
 	*/
 	public function actionIndex()
 	{
-		return $this->render('index');
+	    $which = Yii::$app->request->get('which');
+	    $which = $which ? $which : 'new';
+		return $this->render('index',[
+		    'which' => $which
+        ]);
 	}
-	
+
+    /**
+     *搜索列表
+     */
+    public function actionSearch()
+    {
+        $word = Yii::$app->request->post('title');
+
+
+        $s = PostModel::find()
+            ->where(['like','title',$word])
+            ->orWhere(['like','content',$word])
+            ->all();
+
+        return $this->render('search',[
+            'data' => $s,
+            'word' => $word
+        ]);
+    }
 	/**
 	*创建文章
 	*/

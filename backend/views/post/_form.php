@@ -10,7 +10,7 @@ use yii\widgets\ActiveForm;
 
 <div class="post-model-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['action'=>'post/search']); ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 

@@ -55,7 +55,7 @@ var vjs = function(id, options, ready){
   }
 
   // Element may have a player attr referring to an already created player instance.
-  // If not, set up a new player and return the instance.
+  // If not, set up a news player and return the instance.
   return tag['player'] || new vjs.Player(tag, options, ready);
 };
 
@@ -175,13 +175,13 @@ vjs.CoreObject = vjs['CoreObject'] = function(){};
 // CoreObject
 
 /**
- * Create a new object that inherits from this Object
+ * Create a news object that inherits from this Object
  *
  *     var Animal = CoreObject.extend();
  *     var Horse = Animal.extend();
  *
  * @param {Object} props Functions and properties to be applied to the
- *                       new object's prototype
+ *                       news object's prototype
  * @return {vjs.CoreObject} An object that inherits from CoreObject
  * @this {*}
  */
@@ -228,7 +228,7 @@ vjs.CoreObject.extend = function(props){
 };
 
 /**
- * Create a new instace of this Object class
+ * Create a news instace of this Object class
  *
  *     var myAnimal = Animal.create();
  *
@@ -236,13 +236,13 @@ vjs.CoreObject.extend = function(props){
  * @this {*}
  */
 vjs.CoreObject.create = function(){
-  // Create a new object that inherits from this object's prototype
+  // Create a news object that inherits from this object's prototype
   var inst = vjs.obj.create(this.prototype);
 
-  // Apply this constructor function to the new object
+  // Apply this constructor function to the news object
   this.apply(inst, arguments);
 
-  // Return the new object
+  // Return the news object
   return inst;
 };
 /**
@@ -561,8 +561,8 @@ vjs.trigger = function(elem, event) {
   // event = typeof event === 'object' ?
   //   event[vjs.expando] ?
   //     event :
-  //     new vjs.Event(type, event) :
-  //   new vjs.Event(type);
+  //     news vjs.Event(type, event) :
+  //   news vjs.Event(type);
 
   // event.type = type;
   // if (handler) {
@@ -652,14 +652,14 @@ vjs.obj = {};
  * @private
  */
  vjs.obj.create = Object.create || function(obj){
-  //Create a new function called 'F' which is just an empty object.
+  //Create a news function called 'F' which is just an empty object.
   function F() {}
 
   //the prototype of the 'F' function should point to the
   //parameter of the anonymous function.
   F.prototype = obj;
 
-  //create a new constructor function based off of the 'F' function.
+  //create a news constructor function based off of the 'F' function.
   return new F();
 };
 
@@ -764,7 +764,7 @@ vjs.bind = function(context, fn, uid) {
   // Make sure the function has a unique ID
   if (!fn.guid) { fn.guid = vjs.guid++; }
 
-  // Create the new function that changes the context
+  // Create the news function that changes the context
   var ret = function() {
     return fn.apply(context, arguments);
   };
@@ -1504,7 +1504,7 @@ vjs.Component.prototype.contentEl_;
 
 /**
  * Return the component's DOM element for embedding content.
- * Will either be el_ or a new element defined in createEl.
+ * Will either be el_ or a news element defined in createEl.
  *
  * @return {Element}
  */
@@ -1634,7 +1634,7 @@ vjs.Component.prototype.getChild = function(name){
 vjs.Component.prototype.addChild = function(child, options){
   var component, componentClass, componentName, componentId;
 
-  // If string, create new component with options
+  // If string, create news component with options
   if (typeof child === 'string') {
 
     componentName = child;
@@ -1648,7 +1648,7 @@ vjs.Component.prototype.addChild = function(child, options){
     // Set name through options
     options['name'] = componentName;
 
-    // Create a new object & element for this controls set
+    // Create a news object & element for this controls set
     // If there's no .player_, this is a player
     // Closure Compiler throws an 'incomplete alias' warning if we use the vjs variable directly.
     // Every class should be exported, so this should never be a problem here.
@@ -2339,7 +2339,7 @@ vjs.Slider.prototype.update = function(){
         // There is a margin of half the handle's width on both sides.
         boxAdjustedPercent = 1 - handlePercent,
 
-        // Adjust the progress that we'll use to set widths to the new adjusted box width
+        // Adjust the progress that we'll use to set widths to the news adjusted box width
         adjustedProgress = progress * boxAdjustedPercent;
 
     // The bar does reach the left side, so we need to account for this in the bar's width
@@ -2349,7 +2349,7 @@ vjs.Slider.prototype.update = function(){
     handle.el().style.left = vjs.round(adjustedProgress * 100, 2) + '%';
   }
 
-  // Set the new bar width
+  // Set the news bar width
   bar.el().style.width = vjs.round(barProgress * 100, 2) + '%';
 };
 
@@ -2727,7 +2727,7 @@ vjs.Player = vjs.Component.extend({
     // May be turned back on by HTML5 tech if nativeControlsForTouch is true
     tag.controls = false;
 
-    // Run base component initializing with new options.
+    // Run base component initializing with news options.
     // Builds the element through createEl()
     // Inits and embeds any child components in opts
     vjs.Component.call(this, this, options, ready);
@@ -2933,7 +2933,7 @@ vjs.Player.prototype.loadTech = function(techName, source){
 
   this.techName = techName;
 
-  // Turn off API access because we're loading a new tech that might load asynchronously
+  // Turn off API access because we're loading a news tech that might load asynchronously
   this.isReady_ = false;
 
   var techReady = function(){
@@ -2981,7 +2981,7 @@ vjs.Player.prototype.unloadTech = function(){
 
 // There's many issues around changing the size of a Flash (or other plugin) object.
 // First is a plugin reload issue in Firefox that has been around for 11 years: https://bugzilla.mozilla.org/show_bug.cgi?id=90268
-// Then with the new fullscreen API, Mozilla and webkit browsers will reload the flash object after going to fullscreen.
+// Then with the news fullscreen API, Mozilla and webkit browsers will reload the flash object after going to fullscreen.
 // To get around this, we're unloading the tech, caching source and currentTime values, and reloading the tech once the plugin is resized.
 // reloadTech: function(betweenFn){
 //   vjs.log('unloadingTech')
@@ -3431,7 +3431,7 @@ vjs.Player.prototype.bufferedPercent = function(){
  *
  * 0 is off (muted), 1.0 is all the way up, 0.5 is half way.
  *
- * @param  {Number} percentAsDecimal The new volume as a decimal percent
+ * @param  {Number} percentAsDecimal The news volume as a decimal percent
  * @return {Number}                  The current volume, when getting
  * @return {vjs.Player}              self, when setting
  */
@@ -4031,7 +4031,7 @@ vjs.Player.prototype.listenForUserActivity = function(){
     requestFS.isFullScreen = 'fullScreen';
 
   // Webkit (Chrome/Safari) and Mozilla (Firefox) have working implementations
-  // that use prefixes and vary slightly from the new W3C spec. Specifically,
+  // that use prefixes and vary slightly from the news W3C spec. Specifically,
   // using 'exit' instead of 'cancel', and lowercasing the 'S' in Fullscreen.
   // Other browsers don't have any hints of which version they might follow yet,
   // so not going to try to predict by looping through all prefixes.
@@ -4409,7 +4409,7 @@ vjs.SeekBar.prototype.onMouseMove = function(event){
   // Don't let video end while scrubbing.
   if (newTime == this.player_.duration()) { newTime = newTime - 0.1; }
 
-  // Set new time (tell player to seek to new time)
+  // Set news time (tell player to seek to news time)
   this.player_.currentTime(newTime);
 };
 
@@ -5136,7 +5136,7 @@ vjs.Html5.prototype.createEl = function(){
 
   // Check if this browser supports moving the element into the box.
   // On the iPhone video will break if you move the element,
-  // So we have to create a brand new element.
+  // So we have to create a brand news element.
   if (!el || this.features['movingMediaElementInDOM'] === false) {
 
     // If the original tag is still there, clone and remove it.
@@ -5151,7 +5151,7 @@ vjs.Html5.prototype.createEl = function(){
         className:'vjs-tech'
       });
     }
-    // associate the player with the new tag
+    // associate the player with the news tag
     el['player'] = player;
 
     vjs.insertFirst(el, player.el());
@@ -6356,7 +6356,7 @@ vjs.TextTrack.prototype.deactivate = function(){
 // Indicates that the text track is loading and there have been no fatal errors encountered so far. Further cues might still be added to the track.
 //
 // Loaded
-// Indicates that the text track has been loaded with no fatal errors. No new cues will be added to the track except if the text track corresponds to a MutableTextTrack object.
+// Indicates that the text track has been loaded with no fatal errors. No news cues will be added to the track except if the text track corresponds to a MutableTextTrack object.
 //
 // Failed to load
 // Indicates that the text track was enabled, but when the user agent attempted to obtain it, this failed in some way (e.g. URL could not be resolved, network error, unknown text track format). Some or all of the cues are likely missing and will not be obtained.
@@ -6479,16 +6479,16 @@ vjs.TextTrack.prototype.update = function(){
     // Get curent player time
     var time = this.player_.currentTime();
 
-    // Check if the new time is outside the time box created by the the last update.
+    // Check if the news time is outside the time box created by the the last update.
     if (this.prevChange === undefined || time < this.prevChange || this.nextChange <= time) {
       var cues = this.cues_,
 
-          // Create a new time box for this state.
+          // Create a news time box for this state.
           newNextChange = this.player_.duration(), // Start at beginning of the timeline
           newPrevChange = 0, // Start at end
 
           reverse = false, // Set the direction of the loop through the cues. Optimized the cue check.
-          newCues = [], // Store new active cues.
+          newCues = [], // Store news active cues.
 
           // Store where in the loop the current active cues are, to provide a smart starting point for the next loop.
           firstActiveIndex, lastActiveIndex,
@@ -6610,7 +6610,7 @@ vjs.TextTrack.prototype.reset = function(){
 vjs.CaptionsTrack = vjs.TextTrack.extend();
 vjs.CaptionsTrack.prototype.kind_ = 'captions';
 // Exporting here because Track creation requires the track kind
-// to be available on global object. e.g. new window['videojs'][Kind + 'Track']
+// to be available on global object. e.g. news window['videojs'][Kind + 'Track']
 
 /**
  * The track component for managing the hiding and showing of subtitles
@@ -6749,7 +6749,7 @@ vjs.TextTrackButton = vjs.MenuButton.extend({
 // vjs.TextTrackButton.prototype.buttonPressed = false;
 
 // vjs.TextTrackButton.prototype.createMenu = function(){
-//   var menu = new vjs.Menu(this.player_);
+//   var menu = news vjs.Menu(this.player_);
 
 //   // Add a title list item to the top
 //   // menu.el().appendChild(vjs.createEl('li', {
@@ -7063,7 +7063,7 @@ vjs.autoSetup = function(){
             // If empty string, make it a parsable json object.
             options = vjs.JSON.parse(options || '{}');
 
-            // Create new video.js instance.
+            // Create news video.js instance.
             player = videojs(vid, options);
           }
         }

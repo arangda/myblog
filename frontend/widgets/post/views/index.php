@@ -9,26 +9,14 @@ use yii\widgets\LinkPager;
         <div class="panel-body border-bottom">      
             <div class="row">
                 <div class="btn-group col-xs-12">
-                    <h1><a href="<?=Url::to(['post/view','id'=>$list['id']])?>"><?=$list['title']?></a></h1>
-                    <span class="post-tags">
-                        <span class="glyphicon glyphicon-user"></span><a href="<?=Url::to(['member/index','id'=>$list['user_id']])?>"><?=$list['user_name']?></a>&nbsp;
-                        <span class="glyphicon glyphicon-time"></span><?=date('Y-m-d',$list['created_at'])?>&nbsp;
-                        <span class="glyphicon glyphicon-folder-open"></span><?=isset($list['cat']['cat_name'])?$list['cat']['cat_name']:0?>&nbsp;
-                        <span class="glyphicon glyphicon-eye-open"></span><?=isset($list['extend']['browser'])?$list['extend']['browser']:0?>&nbsp;
-                        <span class="glyphicon glyphicon-comment"></span><a href="<?=Url::to(['post/detail','id'=>$list['id']])?>"><?=isset($list['extend']['comment'])?$list['extend']['comment']:0?></a>
-                    </span>
-                    <p class="post-content"><?=$list['summary']?></p>
-                    <a href="<?=Url::to(['post/view','id'=>$list['id']])?>"><button class="btn btn-warning no-radius btn-sm pull-right">阅读全文</button></a>
+                    <h1><a href="<?=Url::to(['post/view','id'=>$list['id']])?>"><?=$list['title']?>
+                            <span class="badge"><?=$list['browser']?></span>
+                        </a>
+                    </h1>
+
                 </div>
             </div>
-            <div class="tags">
-                <?php if(!empty($list['tags'])):?>
-                <span class="fa fa-tags"></span>
-                    <?php foreach ($list['tags'] as $lt):?>
-                    <a href="#"><?=$lt?></a>，
-                    <?php endforeach;?>
-                <?php endif;?>
-            </div>
+
         </div>
         <?php endforeach;?>            
     </div>

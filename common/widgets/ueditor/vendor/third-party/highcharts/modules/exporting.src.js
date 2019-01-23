@@ -215,7 +215,7 @@ extend(Chart.prototype, {
 			/*jslint unparam: false*/
 		}
 
-		// create a sandbox where a new chart will be generated
+		// create a sandbox where a news chart will be generated
 		sandbox = createElement(DIV, null, {
 			position: ABSOLUTE,
 			top: '-9999em',

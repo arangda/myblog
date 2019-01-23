@@ -31,7 +31,7 @@ var S2;(function () { if (!S2 || !S2.requirejs) {
 if (!S2) { S2 = {}; } else { require = S2; }
 /**
  * @license almond 0.2.9 Copyright (c) 2011-2014, The Dojo Foundation All Rights Reserved.
- * Available via the MIT or new BSD license.
+ * Available via the MIT or news BSD license.
  * see: http://github.com/jrburke/almond for details
  */
 //Going sloppy to avoid 'use strict' string cost, but strict practices should
@@ -140,7 +140,7 @@ var requirejs, require, define;
                         if (mapValue) {
                             mapValue = mapValue[nameSegment];
                             if (mapValue) {
-                                //Match, update name to the new value.
+                                //Match, update name to the news value.
                                 foundMap = mapValue;
                                 foundI = i;
                                 break;
@@ -4600,7 +4600,7 @@ S2.define('select2/defaults',[
           }
         }
 
-        // If any children matched, return the new object
+        // If any children matched, return the news object
         if (match.children.length > 0) {
           return match;
         }

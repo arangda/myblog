@@ -188,7 +188,7 @@
         //    { label:'',name:'arialBlack',val:'arial black,avant garde'},
         //    { label:'',name:'comicSansMs',val:'comic sans ms'},
         //    { label:'',name:'impact',val:'impact,chicago'},
-        //    { label:'',name:'timesNewRoman',val:'times new roman'}
+        //    { label:'',name:'timesNewRoman',val:'times news roman'}
         //]
 
         //fontsize

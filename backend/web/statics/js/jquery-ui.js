@@ -365,13 +365,13 @@ $.widget = function( name, base, prototype ) {
 	$[ namespace ] = $[ namespace ] || {};
 	existingConstructor = $[ namespace ][ name ];
 	constructor = $[ namespace ][ name ] = function( options, element ) {
-		// allow instantiation without "new" keyword
+		// allow instantiation without "news" keyword
 		if ( !this._createWidget ) {
 			return new constructor( options, element );
 		}
 
 		// allow instantiation without initializing for simple inheritance
-		// must use "new" keyword (the code above always passes args)
+		// must use "news" keyword (the code above always passes args)
 		if ( arguments.length ) {
 			this._createWidget( options, element );
 		}
@@ -388,7 +388,7 @@ $.widget = function( name, base, prototype ) {
 	});
 
 	basePrototype = new base();
-	// we need to make the options hash a property directly on the new instance
+	// we need to make the options hash a property directly on the news instance
 	// otherwise we'll modify the options hash on the prototype that we're
 	// inheriting from
 	basePrototype.options = $.widget.extend( {}, basePrototype.options );
@@ -435,14 +435,14 @@ $.widget = function( name, base, prototype ) {
 
 	// If this widget is being redefined then we need to find all widgets that
 	// are inheriting from it and redefine all of them so that they inherit from
-	// the new version of this widget. We're essentially trying to replace one
+	// the news version of this widget. We're essentially trying to replace one
 	// level in the prototype chain.
 	if ( existingConstructor ) {
 		$.each( existingConstructor._childConstructors, function( i, child ) {
 			var childPrototype = child.prototype;
 
 			// redefine the child widget using the same prototype that was
-			// originally used, but inherit from the new version of the base
+			// originally used, but inherit from the news version of the base
 			$.widget( childPrototype.namespace + "." + childPrototype.widgetName, constructor, child._proto );
 		});
 		// remove the list of existing child constructors from the old constructor
@@ -797,10 +797,10 @@ $.Widget.prototype = {
 			type :
 			this.widgetEventPrefix + type ).toLowerCase();
 		// the original event may come from any element
-		// so we need to reset the target on the new event
+		// so we need to reset the target on the news event
 		event.target = this.element[ 0 ];
 
-		// copy original event properties over to the new event
+		// copy original event properties over to the news event
 		orig = event.originalEvent;
 		if ( orig ) {
 			for ( prop in orig ) {
@@ -3730,7 +3730,7 @@ $.widget( "ui.buttonset", {
 			allButtons = this.element.find( this.options.items ),
 			existingButtons = allButtons.filter( ":ui-button" );
 
-		// Initialize new buttons
+		// Initialize news buttons
 		allButtons.not( ":ui-button" ).button();
 
 		// Refresh existing buttons
@@ -3911,7 +3911,7 @@ $.extend(Datepicker.prototype, {
 	},
 
 	/* Override the default settings for all instances of the date picker.
-	 * @param  settings  object - the new settings to use as defaults (anonymous object)
+	 * @param  settings  object - the news settings to use as defaults (anonymous object)
 	 * @return the manager object
 	 */
 	setDefaults: function(settings) {
@@ -3921,7 +3921,7 @@ $.extend(Datepicker.prototype, {
 
 	/* Attach the date picker to a jQuery selection.
 	 * @param  target	element - the target input field or division or span
-	 * @param  settings  object - the new settings to use for this date picker instance (anonymous)
+	 * @param  settings  object - the news settings to use for this date picker instance (anonymous)
 	 */
 	_attachDatepicker: function(target, settings) {
 		var nodeName, inline, inst;
@@ -3940,7 +3940,7 @@ $.extend(Datepicker.prototype, {
 		}
 	},
 
-	/* Create a new instance object. */
+	/* Create a news instance object. */
 	_newInst: function(target, inline) {
 		var id = target[0].id.replace(/([^A-Za-z0-9_\-])/g, "\\\\$1"); // escape jQuery meta chars
 		return {id: id, input: target, // associated target
@@ -4238,11 +4238,11 @@ $.extend(Datepicker.prototype, {
 
 	/* Update or retrieve the settings for a date picker attached to an input field or division.
 	 * @param  target  element - the target input field or division or span
-	 * @param  name	object - the new settings to update or
+	 * @param  name	object - the news settings to update or
 	 *				string - the name of the setting to change or retrieve,
 	 *				when retrieving also "all" for all instance settings or
 	 *				"defaults" for all global defaults
-	 * @param  value   any - the new value for the setting
+	 * @param  value   any - the news value for the setting
 	 *				(omit if above is an object or to retrieve a value)
 	 */
 	_optionDatepicker: function(target, name, value) {
@@ -4270,7 +4270,7 @@ $.extend(Datepicker.prototype, {
 			minDate = this._getMinMaxDate(inst, "min");
 			maxDate = this._getMinMaxDate(inst, "max");
 			datepicker_extendRemove(inst.settings, settings);
-			// reformat the old minDate/maxDate values if dateFormat changes and a new minDate/maxDate isn't provided
+			// reformat the old minDate/maxDate values if dateFormat changes and a news minDate/maxDate isn't provided
 			if (minDate !== null && settings.dateFormat !== undefined && settings.minDate === undefined) {
 				inst.settings.minDate = this._formatDate(inst, minDate);
 			}
@@ -4309,7 +4309,7 @@ $.extend(Datepicker.prototype, {
 
 	/* Set the dates for a jQuery selection.
 	 * @param  target element - the target input field or division or span
-	 * @param  date	Date - the new date
+	 * @param  date	Date - the news date
 	 */
 	_setDateDatepicker: function(target, date) {
 		var inst = this._getInst(target);
@@ -4743,7 +4743,7 @@ $.extend(Datepicker.prototype, {
 		this._adjustDate(target);
 	},
 
-	/* Action for selecting a new month/year. */
+	/* Action for selecting a news month/year. */
 	_selectMonthYear: function(id, select, period) {
 		var target = $(id),
 			inst = this._getInst(target[0]);
@@ -5791,7 +5791,7 @@ function datepicker_extendRemove(target, props) {
 
 /* Invoke the datepicker functionality.
    @param  options  string - a command, optionally followed by additional parameters or
-					Object - settings for attaching new datepicker functionality
+					Object - settings for attaching news datepicker functionality
    @return  jQuery object */
 $.fn.datepicker = function(options){
 
@@ -6638,12 +6638,12 @@ $.ui.plugin.add( "draggable", "connectToSortable", {
 					};
 
 					// Fire the start events of the sortable with our passed browser event,
-					// and our own helper (so it doesn't create a new one)
+					// and our own helper (so it doesn't create a news one)
 					event.target = sortable.currentItem[ 0 ];
 					sortable._mouseCapture( event, true );
 					sortable._mouseStart( event, true, true );
 
-					// Because the browser event is way off the new appended portlet,
+					// Because the browser event is way off the news appended portlet,
 					// modify necessary variables to reflect the changes
 					sortable.offset.click.top = draggable.offset.click.top;
 					sortable.offset.click.left = draggable.offset.click.left;
@@ -10138,7 +10138,7 @@ $.effects.animateClass = function( value, duration, easing, callback ) {
 		};
 		applyClassChange();
 
-		// map all animated objects again - calculate new styles and diff
+		// map all animated objects again - calculate news styles and diff
 		allAnimations = allAnimations.map(function() {
 			this.end = getElementStyles( this.el[ 0 ] );
 			this.diff = styleDifference( this.start, this.end );
@@ -11377,7 +11377,7 @@ var effectSize = $.effects.effect.size = function( o, done ) {
 			$.effects.restore( el, props );
 			if ( !restore ) {
 
-				// we need to calculate our new positioning based on the scaling
+				// we need to calculate our news positioning based on the scaling
 				if ( position === "static" ) {
 					el.css({
 						position: "relative",
@@ -11390,7 +11390,7 @@ var effectSize = $.effects.effect.size = function( o, done ) {
 							var val = parseInt( str, 10 ),
 								toRef = idx ? el.to.left : el.to.top;
 
-							// if original was "auto", recalculate the new value from wrapper
+							// if original was "auto", recalculate the news value from wrapper
 							if ( str === "auto" ) {
 								return toRef + "px";
 							}
@@ -12238,7 +12238,7 @@ var selectmenu = $.widget( "ui.selectmenu", {
 	_drawButton: function() {
 		var that = this;
 
-		// Associate existing label with the new button
+		// Associate existing label with the news button
 		this.label = $( "label[for='" + this.ids.element + "']" ).attr( "for", this.ids.button );
 		this._on( this.label, {
 			click: function( event ) {
@@ -14358,7 +14358,7 @@ var sortable = $.widget("ui.sortable", $.ui.mouse, {
 			}
 		} else {
 
-			//When entering a new container, we will find the item with the least distance and append our item near it
+			//When entering a news container, we will find the item with the least distance and append our item near it
 			dist = 10000;
 			itemWithLeastDistance = null;
 			floating = innermostContainer.floating || this._isFloating(this.currentItem);

@@ -366,7 +366,7 @@ function createElement(tag, attribs, styles, parent, nopad) {
 }
 
 /**
- * Extend a prototyped class by new members
+ * Extend a prototyped class by news members
  * @param {Object} parent
  * @param {Object} members
  */
@@ -798,7 +798,7 @@ function getTimeTicks(normalizedInterval, min, max, startOfWeek) {
 		tickPositions.push(time);
 
 
-		// mark new days if the time is dividible by day (#1649, #1760)
+		// mark news days if the time is dividible by day (#1649, #1760)
 		each(grep(tickPositions, function (time) {
 			return interval <= timeUnits[HOUR] && time % timeUnits[DAY] === timezoneOffset;
 		}), function (time) {
@@ -1848,8 +1848,8 @@ function setTimeMethods() {
 }
 
 /**
- * Merge the default options with custom options and return the new options structure
- * @param {Object} options The new custom options
+ * Merge the default options with custom options and return the news options structure
+ * @param {Object} options The news custom options
  */
 function setOptions(options) {
 	
@@ -1869,7 +1869,7 @@ function setOptions(options) {
 
 /**
  * Get the updated default options. Merely exposing defaultOptions for outside modules
- * isn't enough because the setOptions method creates a new object.
+ * isn't enough because the setOptions method creates a news object.
  */
 function getOptions() {
 	return defaultOptions;
@@ -2100,7 +2100,7 @@ SVGElement.prototype = {
 
 				if (result !== false) {
 					if (result !== UNDEFINED) {
-						value = result; // the attribute setter has returned a new value to set
+						value = result; // the attribute setter has returned a news value to set
 					}
 
 
@@ -2392,7 +2392,7 @@ SVGElement.prototype = {
 			styles.fill = styles.color;
 		}
 
-		// Merge the new styles with the old ones
+		// Merge the news styles with the old ones
 		styles = extend(
 			elemWrapper.styles,
 			styles
@@ -3351,7 +3351,7 @@ SVGRenderer.prototype = {
 								bBox = wrapper.getBBox();
 								actualWidth = bBox.width;
 								tooLong = actualWidth > width;
-								if (!tooLong || words.length === 1) { // new line needed
+								if (!tooLong || words.length === 1) { // news line needed
 									words = rest;
 									rest = [];
 									if (words.length) {
@@ -3970,7 +3970,7 @@ SVGRenderer.prototype = {
 				});
 			}
 
-			// Build the unique key to detect whether we need to create a new element (#1282)
+			// Build the unique key to detect whether we need to create a news element (#1282)
 			for (n in gradAttr) {
 				if (n !== 'id') {
 					key.push(n, gradAttr[n]);
@@ -4266,7 +4266,7 @@ SVGRenderer.prototype = {
 
 		/**
 		 * This function runs after the label is added to the DOM (when the bounding box is
-		 * available), and after the text of the label is updated to detect the new bounding
+		 * available), and after the text of the label is updated to detect the news bounding
 		 * box and reflect it in the border box.
 		 */
 		function updateBoxSize() {
@@ -4546,7 +4546,7 @@ if (!hasSVG && !useCanVG) {
 Highcharts.VMLElement = VMLElement = {
 
 	/**
-	 * Initialize a new VML element wrapper. It builds the markup as a string
+	 * Initialize a news VML element wrapper. It builds the markup as a string
 	 * to minimize DOM traffic.
 	 * @param {Object} renderer
 	 * @param {Object} nodeName
@@ -4733,7 +4733,7 @@ Highcharts.VMLElement = VMLElement = {
 				if (result !== false && value !== null) { // #620
 
 					if (result !== UNDEFINED) {
-						value = result; // the attribute setter has returned a new value to set
+						value = result; // the attribute setter has returned a news value to set
 					}
 
 
@@ -6021,7 +6021,7 @@ Tick.prototype = {
 	 * Put everything in place
 	 *
 	 * @param index {Number}
-	 * @param old {Boolean} Use old coordinates to prepare an animation into new position
+	 * @param old {Boolean} Use old coordinates to prepare an animation into news position
 	 */
 	render: function (index, old, opacity) {
 		var tick = this,
@@ -6144,7 +6144,7 @@ Tick.prototype = {
 				show = false;
 			}
 
-			// Set the new position, and show or hide
+			// Set the news position, and show or hide
 			if (show && !isNaN(xy.y)) {
 				xy.opacity = opacity;
 				label[tick.isNew ? 'attr' : 'animate'](xy);
@@ -6395,10 +6395,10 @@ StackItem.prototype = {
 				format(formatOption, this) : 
 				options.formatter.call(this);  // format the text in the label
 
-		// Change the text to reflect the new total and set visibility to hidden in case the serie is hidden
+		// Change the text to reflect the news total and set visibility to hidden in case the serie is hidden
 		if (this.label) {
 			this.label.attr({text: str, visibility: HIDDEN});
-		// Create new label
+		// Create news label
 		} else {
 			this.label =
 				this.axis.chart.renderer.text(str, 0, 0, options.useHTML)		// dummy positions, actual position updated with setOffset method in columnseries
@@ -6449,7 +6449,7 @@ StackItem.prototype = {
 	}
 };
 /**
- * Create a new axis object
+ * Create a news axis object
  * @param {Object} chart
  * @param {Object} options
  */
@@ -6806,7 +6806,7 @@ Axis.prototype = {
 	},
 
 	/**
-	 * Update the axis with a new options structure
+	 * Update the axis with a news options structure
 	 */
 	update: function (newOptions, redraw) {
 		var chart = this.chart;
@@ -7718,15 +7718,15 @@ Axis.prototype = {
 		axis.oldMax = axis.max;
 		axis.oldAxisLength = axis.len;
 
-		// set the new axisLength
+		// set the news axisLength
 		axis.setAxisSize();
 		//axisLength = horiz ? axisWidth : axisHeight;
 		isDirtyAxisLength = axis.len !== axis.oldAxisLength;
 
-		// is there new data?
+		// is there news data?
 		each(axis.series, function (series) {
 			if (series.isDirtyData || series.isDirty ||
-					series.xAxis.isDirty) { // when x axis is dirty, we need new data extremes for y as well
+					series.xAxis.isDirty) { // when x axis is dirty, we need news data extremes for y as well
 				isDirtyData = true;
 			}
 		});
@@ -8249,7 +8249,7 @@ Axis.prototype = {
 						minorTicks[pos] = new Tick(axis, pos, 'minor');
 					}
 
-					// render new ticks in old position
+					// render news ticks in old position
 					if (slideInTicks && minorTicks[pos].isNew) {
 						minorTicks[pos].render(null, true);
 					}
@@ -8273,7 +8273,7 @@ Axis.prototype = {
 							ticks[pos] = new Tick(axis, pos);
 						}
 	
-						// render new ticks in old position
+						// render news ticks in old position
 						if (slideInTicks && ticks[pos].isNew) {
 							ticks[pos].render(i, true);
 						}
@@ -8502,7 +8502,7 @@ Axis.prototype = {
 	},
 
 	/**
-	 * Set new axis categories and optionally redraw
+	 * Set news axis categories and optionally redraw
 	 * @param {Array} categories
 	 * @param {Boolean} redraw
 	 */
@@ -8685,7 +8685,7 @@ Tooltip.prototype = {
 				tooltip.isHidden = true;
 			}, pick(this.options.hideDelay, 500));
 
-			// hide previous hoverPoints and set new
+			// hide previous hoverPoints and set news
 			if (hoverPoints) {
 				each(hoverPoints, function (point) {
 					point.setState();
@@ -8867,7 +8867,7 @@ Tooltip.prototype = {
 		// shared tooltip, array is sent over
 		if (shared && !(point.series && point.series.noSharedTooltip)) {
 			
-			// hide previous hoverPoints and set new
+			// hide previous hoverPoints and set news
 			
 			chart.hoverPoints = point;
 			if (hoverPoints) {
@@ -8980,7 +8980,7 @@ Tooltip.prototype = {
 	},
 	
 	/**
-	 * Find the new position and perform the move
+	 * Find the news position and perform the move
 	 */
 	updatePosition: function (point) {
 		var chart = this.chart,
@@ -9177,7 +9177,7 @@ Pointer.prototype = {
 			// get the point
 			point = hoverSeries.tooltipPoints[index];
 
-			// a new point is hovered, refresh the tooltip
+			// a news point is hovered, refresh the tooltip
 			if (point && point !== hoverPoint) {
 
 				// trigger the events
@@ -10164,7 +10164,7 @@ Legend.prototype = {
 			(showCheckbox ? 20 : 0);
 		legend.itemHeight = itemHeight = bBox.height;
 
-		// if the item exceeds the width, start a new line
+		// if the item exceeds the width, start a news line
 		if (horizontal && legend.itemX - initialItemX + itemWidth >
 				(widthOption || (chart.chartWidth - 2 * padding - initialItemX))) {
 			legend.itemX = initialItemX;
@@ -10172,7 +10172,7 @@ Legend.prototype = {
 			legend.lastLineHeight = 0; // reset for next line
 		}
 
-		// If the item exceeds the height, start a new column
+		// If the item exceeds the height, start a news column
 		/*if (!horizontal && legend.itemY + options.y + itemHeight > chart.chartHeight - spacingTop - spacingBottom) {
 			legend.itemY = legend.initialItemY;
 			legend.itemX += legend.maxItemWidth;
@@ -10206,7 +10206,7 @@ Legend.prototype = {
 	/**
 	 * Render the legend. This method can be called both before and after
 	 * chart.render. If called after, it will only rearrange items instead
-	 * of creating new ones.
+	 * of creating news ones.
 	 */
 	render: function () {
 		var legend = this,
@@ -10683,7 +10683,7 @@ Chart.prototype = {
 		}));
 		/*jslint unused: true*/
 
-		// Push the new axis options to the chart options
+		// Push the news axis options to the chart options
 		chartOptions[key] = splat(chartOptions[key] || {});
 		chartOptions[key].push(options);
 
@@ -11172,7 +11172,7 @@ Chart.prototype = {
 				doRedraw = true;
 			}
 
-			chart[isX ? 'mouseDownX' : 'mouseDownY'] = mousePos; // set new reference for next run
+			chart[isX ? 'mouseDownX' : 'mouseDownY'] = mousePos; // set news reference for next run
 		});
 
 		if (doRedraw) {
@@ -11855,7 +11855,7 @@ Chart.prototype = {
 			series.linkedSeries.length = 0;
 		});
 
-		// Apply new links
+		// Apply news links
 		each(chartSeries, function (series) {
 			var linkedTo = series.options.linkedTo;
 			if (isString(linkedTo)) {
@@ -11904,11 +11904,11 @@ Chart.prototype = {
 
 		chart.maxTicks = null; // reset for second pass
 		each(axes, function (axis) {
-			axis.setTickPositions(true); // update to reflect the new margins
+			axis.setTickPositions(true); // update to reflect the news margins
 			axis.setMaxTicks();
 		});
 		chart.adjustTickAmounts();
-		chart.getMargins(); // second pass to check for new labels
+		chart.getMargins(); // second pass to check for news labels
 
 
 		// Draw the borders and backgrounds
@@ -12443,7 +12443,7 @@ Point.prototype = {
 	},
 
 	/**
-	 * Update the point with new options (typically x/y data) and optionally redraw the series.
+	 * Update the point with news options (typically x/y data) and optionally redraw the series.
 	 *
 	 * @param {Object} options Point options as defined in the series.data array
 	 * @param {Boolean} redraw Whether to redraw the chart or wait for an explicit call
@@ -12636,7 +12636,7 @@ Point.prototype = {
 			radius = markerOptions && point.graphic.symbolName && pointAttr[state].r;
 			point.graphic.attr(merge(
 				pointAttr[state],
-				radius ? { // new symbol attributes (#507, #612)
+				radius ? { // news symbol attributes (#507, #612)
 					x: plotX - radius,
 					y: plotY - radius,
 					width: 2 * radius,
@@ -12651,12 +12651,12 @@ Point.prototype = {
 				newSymbol = pointMarker.symbol || series.symbol;
 
 				// If the point has another symbol than the previous one, throw away the 
-				// state marker graphic and force a new one (#1459)
+				// state marker graphic and force a news one (#1459)
 				if (stateMarkerGraphic && stateMarkerGraphic.currentSymbol !== newSymbol) {				
 					stateMarkerGraphic = stateMarkerGraphic.destroy();
 				}
 
-				// Add a new state marker graphic
+				// Add a news state marker graphic
 				if (!stateMarkerGraphic) {
 					series.stateMarkerGraphic = stateMarkerGraphic = chart.renderer.symbol(
 						newSymbol,
@@ -13135,7 +13135,7 @@ Series.prototype = {
 	},
 
 	/**
-	 * Replace the series data with a new set of data
+	 * Replace the series data with a news set of data
 	 * @param {Object} data
 	 * @param {Object} redraw
 	 */
@@ -13788,7 +13788,7 @@ Series.prototype = {
 				
 				// Set this range's low to the last range's high plus one
 				low = high === UNDEFINED ? 0 : high + 1;
-				// Now find the new high
+				// Now find the news high
 				high = points[i + 1] ?
 					mathMin(mathMax(0, mathFloor( // #2070
 						(point.clientX + (nextPoint ? (nextPoint.wrappedClientX || nextPoint.clientX) : axisLength)) / 2
@@ -14222,7 +14222,7 @@ Series.prototype = {
 
 	},
 	/**
-	 * Update the series with a new set of options
+	 * Update the series with a news set of options
 	 */
 	update: function (newOptions, redraw) {
 		var chart = this.chart,
@@ -14418,7 +14418,7 @@ Series.prototype = {
 							}
 						}
 						
-					// create new label
+					// create news label
 					} else if (defined(str)) {
 						attr = {
 							//align: align,
@@ -15642,7 +15642,7 @@ var ColumnSeries = extendClass(Series, {
 			chart = series.chart;
 
 		// if the series is added dynamically, force redraw of other
-		// series affected by a new column
+		// series affected by a news column
 		if (chart.hasRendered) {
 			each(chart.series, function (otherSeries) {
 				if (otherSeries.type === series.type) {
@@ -15744,7 +15744,7 @@ var ColumnSeries = extendClass(Series, {
 
 		Series.prototype.translate.apply(series);
 
-		// record the new values
+		// record the news values
 		each(series.points, function (point) {
 			var yBottom = pick(point.yBottom, translatedThreshold),
 				plotY = mathMin(mathMax(-999 - yBottom, point.plotY), yAxis.len + 999 + yBottom), // Don't draw too far outside plot area (#1303, #2241)

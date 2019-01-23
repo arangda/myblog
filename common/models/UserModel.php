@@ -180,7 +180,7 @@ class UserModel extends BaseModel implements IdentityInterface
     }
 
     /**
-     * Generates new password reset token
+     * Generates news password reset token
      */
     public function generatePasswordResetToken()
     {

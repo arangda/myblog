@@ -11,7 +11,16 @@ use frontend\widgets\classify\ClassifyWidget;
 ?>
 <div class="row">
 	<div class="col-lg-7">
-		<?=PostWidget::widget(['which'=>$which]);?>
+        <ul class="list-group">
+            <?php foreach ($data as $k => $v): ?>
+                <li class="list-group-item">
+                    <a href="<?= \yii\helpers\Url::toRoute(['post/view','id'=>$v['id']]) ?>" target="_blank">
+
+                        <?= str_replace($word,'<span style="color:red">'.$word.'</span>',$v['title']) ?>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
 	</div>
 	<div class="col-lg-5">
         <!--最新分享-->

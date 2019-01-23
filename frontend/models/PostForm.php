@@ -69,16 +69,24 @@ class PostForm extends Model
 			'cat_id'=>'分类',
 		];
 	}
-	public static function getList($cond,$curPage = 1,$pageSize = 10,$orderBy = ['id'=>SORT_DESC])
+	public static function getList($cond,$curPage = 1,$pageSize = 10,$which = ['id'=>SORT_DESC])
 	{
+
 		$model = new PostModel();
 		//查询语句
-		$select = ['id','title','summary','label_img','cat_id','user_id','user_name','is_valid','created_at','updated_at'];
+        if($which == 'new'){
+            $orderBy = 'posts.id DESC';
+        }
+        if($which == 'hot'){
+            $orderBy = 'post_extends.browser DESC';
+        }
 		$query = $model->find()
-				->select($select)
+                ->select('posts.id,posts.title,posts.created_at,post_extends.browser')
 				->where($cond)
-				->with('relate.tag','extend','cat')
+				->joinWith('extend')
 				->orderBy($orderBy);
+
+
 		//获取分页数据		
 		$res = $model->getPages($query,$curPage,$pageSize);
 		//格式化

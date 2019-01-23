@@ -1359,7 +1359,7 @@ seriesTypes.boxplot = extendClass(seriesTypes.column, {
 					}
 					point.medianShape.animate({ d: medianPath });
 					
-				} else { // create new
+				} else { // create news
 					point.graphic = graphic = renderer.g()
 						.add(series.group);
 					

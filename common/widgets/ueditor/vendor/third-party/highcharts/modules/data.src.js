@@ -287,7 +287,7 @@
 				// Set up arrays containing the column data
 				for (i = 0; i < colCount; i++) {
 					if (i >= startColumn && i <= endColumn) {
-						// Create new columns with the length of either end-start or rowCount
+						// Create news columns with the length of either end-start or rowCount
 						columns[i - startColumn] = [];
 
 						// Setting the length to avoid jslint warning
@@ -552,7 +552,7 @@
 		return new Data(options, chartOptions);
 	};
 
-	// Extend Chart.init so that the Chart constructor accepts a new configuration
+	// Extend Chart.init so that the Chart constructor accepts a news configuration
 	// option group, data.
 	Highcharts.wrap(Highcharts.Chart.prototype, 'init', function (proceed, userOptions, callback) {
 		var chart = this;

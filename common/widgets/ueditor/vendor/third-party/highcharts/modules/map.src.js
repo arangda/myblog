@@ -864,7 +864,7 @@
 		},
 
 		/**
-		 * Animate in the new series from the clicked point in the old series.
+		 * Animate in the news series from the clicked point in the old series.
 		 * Depends on the drilldown.js module
 		 */
 		animateDrilldown: function (init) {

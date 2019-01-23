@@ -319,7 +319,7 @@
              * });
              *
              * // 因为没有指定构造器，父类的构造器将会执行。
-             * var instance = new Manager();    // => Super
+             * var instance = news Manager();    // => Super
              *
              * // 继承子父类的方法
              * instance.hello();    // => hello
@@ -709,7 +709,7 @@
          * 上传入口类。
          * @class Uploader
          * @constructor
-         * @grammar new Uploader( opts ) => Uploader
+         * @grammar news Uploader( opts ) => Uploader
          * @example
          * var uploader = WebUploader.Uploader({
          *     swf: 'path_of_swf/Uploader.swf',
@@ -775,7 +775,7 @@
              * @example
              *
              * // 初始状态图片上传前不会压缩
-             * var uploader = new WebUploader.Uploader({
+             * var uploader = news WebUploader.Uploader({
              *     resize: null;
              * });
              *
@@ -1855,7 +1855,7 @@
          * 文件类
          * @class File
          * @constructor 构造函数
-         * @grammar new File( source ) => File
+         * @grammar news File( source ) => File
          * @param {Lib.File} source [lib.File](#Lib.File)实例, 此source对象是带有Runtime信息的。
          */
         function WUFile( source ) {

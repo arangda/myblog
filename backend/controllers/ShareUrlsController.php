@@ -58,7 +58,7 @@ class ShareUrlsController extends Controller
     }
 
     /**
-     * Creates a new ShareUrls model.
+     * Creates a news ShareUrls model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */

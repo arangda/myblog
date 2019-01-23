@@ -58,7 +58,7 @@ class CatController extends Controller
     }
 
     /**
-     * Creates a new CatModel model.
+     * Creates a news CatModel model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */

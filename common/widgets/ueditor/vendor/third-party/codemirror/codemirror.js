@@ -806,7 +806,7 @@ var CodeMirror = (function() {
                 showingFrom = showingTo = displayOffset = 0;
                 return;
             }
-            // Compute the new visible window
+            // Compute the news visible window
             var visible = visibleLines();
             // Bail out if the visible area is already rendered and nothing changed.
             if (changes !== true && changes.length == 0 && visible.from >= showingFrom && visible.to <= showingTo) return;

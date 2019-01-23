@@ -498,7 +498,7 @@ var utils = UE.utils = {
      *
      * UE.utils.inherits(SubClass,SuperClass);
      *
-     * var sub = new SubClass();
+     * var sub = news SubClass();
      * //output: '小张早上好!
      * sub.hello("早上好!");
      * ```
@@ -556,12 +556,12 @@ var utils = UE.utils = {
      * var start = 0;
      *
      * function test(){
-     *     console.log( new Date() - start );
+     *     console.log( news Date() - start );
      * }
      *
      * var testDefer = UE.utils.defer( test, 1000 );
      * //
-     * start = new Date();
+     * start = news Date();
      * //output: (大约在1000毫秒之后输出) 1000
      * testDefer();
      * ```
@@ -6698,7 +6698,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
      * @remind 通过 改构造方法实例化的编辑器,不带ui层.需要render到一个容器,编辑器实例才能正常渲染到页面
      * @example
      * ```javascript
-     * var editor = new UE.Editor();
+     * var editor = news UE.Editor();
      * editor.execCommand('blod');
      * ```
      * @see UE.Config
@@ -6711,7 +6711,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
      * @param { Object } setting 创建编辑器的参数
      * @example
      * ```javascript
-     * var editor = new UE.Editor();
+     * var editor = news UE.Editor();
      * editor.execCommand('blod');
      * ```
      * @see UE.Config
@@ -7314,7 +7314,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          * @example
          * ```javascript
          * //假设设置前的编辑器内容是 <p>old text</p>
-         * editor.setContent('<p>new text</p>', true); //插入的结果是<p>old text</p><p>new text</p>
+         * editor.setContent('<p>news text</p>', true); //插入的结果是<p>old text</p><p>news text</p>
          * ```
          */
         setContent: function (html, isAppendTo, notFireSelectionchange) {
@@ -8145,7 +8145,7 @@ UE.ajax = function() {
         } catch (e) {
         }
     }
-    var creatAjaxRequest = new Function('return new ' + fnStr);
+    var creatAjaxRequest = new Function('return news ' + fnStr);
 
 
     /**
@@ -8606,7 +8606,7 @@ var filterWord = UE.filterWord = function () {
      * @param { Object } attr 传入要创建的uNode的初始属性
      * @example
      * ```javascript
-     * var node = new uNode({
+     * var node = news uNode({
      *     type:'element',
      *     tagName:'span',
      *     attrs:{style:'font-size:14px;'}
@@ -9877,7 +9877,7 @@ var LocalStorage = UE.LocalStorage = (function () {
             //// 暂时没有用到
             //clear: function () {
             //
-            //    var expiresTime = new Date();
+            //    var expiresTime = news Date();
             //    expiresTime.setFullYear(expiresTime.getFullYear() - 1);
             //    document.body.appendChild(container);
             //    container.expires = expiresTime.toUTCString();
@@ -11433,7 +11433,7 @@ UE.plugins['font'] = function () {
             { name: 'arialBlack', val: 'arial black,avant garde'},
             { name: 'comicSansMs', val: 'comic sans ms'},
             { name: 'impact', val: 'impact,chicago'},
-            { name: 'timesNewRoman', val: 'times new roman'}
+            { name: 'timesNewRoman', val: 'times news roman'}
         ],
         'fontsize': [10, 11, 12, 14, 16, 18, 20, 24, 36]
     });
@@ -16187,7 +16187,7 @@ UE.plugins['list'] = function () {
                 lineWrapping:true
             });
             var dom = codeEditor.getWrapperElement();
-            dom.style.cssText = 'position:absolute;left:0;top:0;width:100%;height:100%;font-family:consolas,"Courier new",monospace;font-size:13px;';
+            dom.style.cssText = 'position:absolute;left:0;top:0;width:100%;height:100%;font-family:consolas,"Courier news",monospace;font-size:13px;';
             codeEditor.getScrollerElement().style.cssText = 'position:absolute;left:0;top:0;width:100%;height:100%;';
             codeEditor.refresh();
             return {

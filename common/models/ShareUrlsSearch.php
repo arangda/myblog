@@ -41,7 +41,7 @@ class ShareUrlsSearch extends ShareUrls
      */
     public function search($params)
     {
-        $query = ShareUrls::find();
+        $query = ShareUrls::find()->orderBy('id DESC');
 
         // add conditions that should always apply here
 

@@ -1171,7 +1171,7 @@ if(!Array.prototype.indexOf){
 			
 				this.baseSetContext(ctx);
 				
-				// create new view port
+				// create news view port
 				if (this.attribute('x').hasValue() && this.attribute('y').hasValue()) {
 					ctx.translate(this.attribute('x').Length.toPixels('x'), this.attribute('y').Length.toPixels('y'));
 				}
@@ -2133,12 +2133,12 @@ if(!Array.prototype.indexOf){
 					}
 					
 					var childLength = child.measureText(ctx);
-					if (textAnchor != 'start' && (i==0 || child.attribute('x').hasValue())) { // new group?
+					if (textAnchor != 'start' && (i==0 || child.attribute('x').hasValue())) { // news group?
 						// loop through rest of children
 						var groupLength = childLength;
 						for (var j=i+1; j<this.children.length; j++) {
 							var childInGroup = this.children[j];
-							if (childInGroup.attribute('x').hasValue()) break; // new group
+							if (childInGroup.attribute('x').hasValue()) break; // news group
 							groupLength += childInGroup.measureText(ctx);
 						}
 						child.x -= (textAnchor == 'end' ? groupLength : groupLength / 2.0);
@@ -2974,7 +2974,7 @@ if (CanvasRenderingContext2D) {
 			this.ttDiv = createElement(DIV, null, initialHiddenStyle, containerParent);
 			this.ttTimer = UNDEFINED;
 
-			// Move away the svg node to a new div inside the container's parent so we can hide it.
+			// Move away the svg node to a news div inside the container's parent so we can hide it.
 			var hiddenSvg = createElement(DIV, {
 				width: containerOffsetWidth,
 				height: containerOffsetHeight
@@ -3022,7 +3022,7 @@ if (CanvasRenderingContext2D) {
 				'border-left': '1px solid darkgray'
 			});
 
-			// This event is triggered when a new tooltip should be shown
+			// This event is triggered when a news tooltip should be shown
 			addEvent(chart, 'tooltipRefresh', function (args) {
 				var chartContainer = chart.container,
 					offsetLeft = chartContainer.offsetLeft,
@@ -3056,7 +3056,7 @@ if (CanvasRenderingContext2D) {
 					clearTimeout(renderer.ttTimer);
 				}
 
-				// Start a new timer that hides tooltip and line
+				// Start a news timer that hides tooltip and line
 				renderer.ttTimer = setTimeout(function () {
 					css(tooltipDiv, { visibility: HIDDEN });
 					css(tooltipLine, { visibility: HIDDEN });

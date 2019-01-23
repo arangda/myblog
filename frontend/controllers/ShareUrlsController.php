@@ -5,10 +5,12 @@ namespace frontend\controllers;
 use Yii;
 use common\models\ShareUrls;
 use common\models\ShareUrlsSearch;
+use yii\data\Pagination;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\models\CatModel;
+
 
 /**
  * ShareUrlsController implements the CRUD actions for ShareUrls model.
@@ -36,12 +38,25 @@ class ShareUrlsController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new ShareUrlsSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $model = new ShareUrls();
+        $cat_id = $_GET['cat_id']? $_GET['cat_id']:4;
+        $which = $_GET['which'] == 'new' ? 'id DESC' : 'views_num DESC';
+
+        if($cat_id == 4){
+
+            $query = $model->find()
+                ->where(['cat_id' =>4])
+                ->orderBy($which);
+        }
+        $curPage = Yii::$app->request->get('page',1);
+        $pageSize = 20;
+        $res = $model->getPages($query,$curPage,$pageSize);
+
+        $pages = new Pagination(['totalCount'=>$res['count'],'pageSize'=>$res['pageSize']]);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'urls' => $res['data'],
+            'pages' => $pages
         ]);
     }
 
@@ -65,7 +80,7 @@ class ShareUrlsController extends Controller
     }
 
     /**
-     * Creates a new ShareUrls model.
+     * Creates a news ShareUrls model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
@@ -97,9 +112,10 @@ class ShareUrlsController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
-
+        $cat = CatModel::getAllCats();
         return $this->render('update', [
             'model' => $model,
+            'cat' => $cat
         ]);
     }
 

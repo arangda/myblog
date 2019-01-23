@@ -391,7 +391,7 @@ return {
 				args,
 				name;
 
-			el.stopAnimation = false; // ready for new
+			el.stopAnimation = false; // ready for news
 
 			if (typeof opt !== 'object' || opt === null) {
 				args = arguments;

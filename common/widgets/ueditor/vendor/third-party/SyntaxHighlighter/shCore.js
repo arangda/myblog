@@ -12,14 +12,14 @@ if (XRegExp) {
     throw Error("can't load XRegExp twice in the same frame");
 }
 
-// Run within an anonymous function to protect variables and avoid new globals
+// Run within an anonymous function to protect variables and avoid news globals
 (function (undefined) {
 
     //---------------------------------
     //  Constructor
     //---------------------------------
 
-    // Accepts a pattern and flags; returns a new, extended `RegExp` object. Differs from a native
+    // Accepts a pattern and flags; returns a news, extended `RegExp` object. Differs from a native
     // regular expression in that additional syntax and flags are supported and cross-browser
     // syntax inconsistencies are ameliorated. `XRegExp(/regex/)` clones an existing regex and
     // converts to type XRegExp
@@ -495,7 +495,7 @@ if (XRegExp) {
 
     // Supporting function for `XRegExp`, `XRegExp.copyAsGlobal`, etc. Returns a copy of a `RegExp`
     // instance with a fresh `lastIndex` (set to zero), preserving properties required for named
-    // capture. Also allows adding new flags in the process of copying the regex
+    // capture. Also allows adding news flags in the process of copying the regex
     function clone (regex, additionalFlags) {
         if (!XRegExp.isRegExp(regex))
             throw TypeError("type RegExp expected");
@@ -1949,7 +1949,7 @@ if (typeof(SyntaxHighlighter) == 'undefined') var SyntaxHighlighter = function()
         /**
          * Shortcut to document.createElement().
          * @param {String} name		Name of the element to create (DIV, A, etc).
-         * @return {HTMLElement}	Returns new HTML element.
+         * @return {HTMLElement}	Returns news HTML element.
          */
         create: function(name)
         {
@@ -2316,7 +2316,7 @@ if (typeof(SyntaxHighlighter) == 'undefined') var SyntaxHighlighter = function()
          * Initializes the highlighter/brush.
          *
          * Constructor isn't used for initialization so that nothing executes during necessary
-         * `new SyntaxHighlighter.Highlighter()` call when setting up brush inheritence.
+         * `news SyntaxHighlighter.Highlighter()` call when setting up brush inheritence.
          *
          * @param {Hash} params Highlighter parameters.
          */
@@ -2394,7 +2394,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
         var keywords =	'-Infinity ...rest Array as AS3 Boolean break case catch const continue Date decodeURI ' +
                 'decodeURIComponent default delete do dynamic each else encodeURI encodeURIComponent escape ' +
                 'extends false final finally flash_proxy for get if implements import in include Infinity ' +
-                'instanceof int internal is isFinite isNaN isXMLName label namespace NaN native new null ' +
+                'instanceof int internal is isFinite isNaN isXMLName label namespace NaN native news null ' +
                 'Null Number Object object_proxy override parseFloat parseInt private protected public ' +
                 'return set static String super switch this throw true try typeof uint undefined unescape ' +
                 'use void while with'
@@ -2435,7 +2435,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
         // http://davidchambersdesign.com/
         var keywords   = 'after before beginning continue copy each end every from return get global in local named of set some that the then times to where whose with without';
         var ordinals   = 'first second third fourth fifth sixth seventh eighth ninth tenth last front back middle';
-        var specials   = 'activate add alias AppleScript ask attachment boolean class constant delete duplicate empty exists false id integer list make message modal modified new no paragraph pi properties quit real record remove rest result reveal reverse run running save string true word yes';
+        var specials   = 'activate add alias AppleScript ask attachment boolean class constant delete duplicate empty exists false id integer list make message modal modified news no paragraph pi properties quit real record remove rest result reveal reverse run running save string true word yes';
 
         this.regexList = [
 
@@ -2648,7 +2648,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 						'const_cast continue private public protected __declspec ' +
 						'default delete deprecated dllexport dllimport do dynamic_cast ' +
 						'else enum explicit extern if for friend goto inline ' +
-						'mutable naked namespace new noinline noreturn nothrow ' +
+						'mutable naked namespace news noinline noreturn nothrow ' +
 						'register reinterpret_cast return selectany ' +
 						'sizeof static static_cast struct switch template this ' +
 						'thread throw true false try typedef typeid typename union ' +
@@ -2701,7 +2701,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 		var keywords =	'abstract as base bool break byte case catch char checked class const ' +
 						'continue decimal default delegate do double else enum event explicit volatile ' +
 						'extern false finally fixed float for foreach get goto if implicit in int ' +
-						'interface internal is lock long namespace new null object operator out ' +
+						'interface internal is lock long namespace news null object operator out ' +
 						'override params private protected public readonly ref return sbyte sealed set ' +
 						'short sizeof stackalloc static string struct switch this throw true try ' +
 						'typeof uint ulong unchecked unsafe ushort using virtual void while var ' +
@@ -2862,7 +2862,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 	function Brush()
 	{
 		this.regexList = [
-			{ regex: /^\+\+\+ .*$/gm,	css: 'color2' },	// new file
+			{ regex: /^\+\+\+ .*$/gm,	css: 'color2' },	// news file
 			{ regex: /^\-\-\- .*$/gm,	css: 'color2' },	// old file
 			{ regex: /^\s.*$/gm,		css: 'color1' },	// unchanged
 			{ regex: /^@@.*@@.*$/gm,	css: 'variable' },	// location
@@ -2926,7 +2926,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 		// http://jroller.com/aalmiray/entry/nice_source_code_syntax_highlighter
 
 		var keywords =	'as assert break case catch class continue def default do else extends finally ' +
-						'if in implements import instanceof interface new package property return switch ' +
+						'if in implements import instanceof interface news package property return switch ' +
 						'throw throws try while public protected private static';
 		var types    =  'void boolean byte char short int long float double';
 		var constants = 'null';
@@ -2976,7 +2976,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 		var keywords =	'abstract assert boolean break byte case catch char class const ' +
 						'continue default do double else enum extends ' +
 						'false final finally float for goto if implements import ' +
-						'instanceof int interface long native new null ' +
+						'instanceof int interface long native news null ' +
 						'package private protected public return ' +
 						'short static strictfp super switch synchronized this throw throws true ' +
 						'transient try void volatile while';
@@ -3023,7 +3023,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 		var keywords = 'abstract after and as assert at before bind bound break catch class '
 						+ 'continue def delete else exclusive extends false finally first for from '
 						+ 'function if import in indexof init insert instanceof into inverse last '
-						+ 'lazy mixin mod nativearray new not null on or override package postinit '
+						+ 'lazy mixin mod nativearray news not null on or override package postinit '
 						+ 'protected public public-init public-read replace return reverse sizeof '
 						+ 'step super then this throw true try tween typeof var where while with '
 						+ 'attribute let private readonly static trigger'
@@ -3059,7 +3059,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 		var keywords =	'break case catch continue ' +
 						'default delete do else false  ' +
 						'for function if in instanceof ' +
-						'new null return super switch ' +
+						'news null return super switch ' +
 						'this throw true try typeof var while with'
 						;
 
@@ -3206,7 +3206,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 
 		var keywords =	'abstract and array as break case catch cfunction class clone const continue declare default die do ' +
 						'else elseif enddeclare endfor endforeach endif endswitch endwhile extends final for foreach ' +
-						'function global goto if implements include include_once interface instanceof insteadof namespace new ' +
+						'function global goto if implements include include_once interface instanceof insteadof namespace news ' +
 						'old_function or private protected public return require require_once static switch ' +
 						'trait throw try use var while xor ';
 		
@@ -3275,7 +3275,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 		var verbs =		'write where wait use update unregister undo trace test tee take suspend ' +
 						'stop start split sort skip show set send select scroll resume restore ' +
 						'restart resolve resize reset rename remove register receive read push ' +
-						'pop ping out new move measure limit join invoke import group get format ' +
+						'pop ping out news move measure limit join invoke import group get format ' +
 						'foreach export expand exit enter enable disconnect disable debug cxnew ' +
 						'copy convertto convertfrom convert connect complete compare clear ' +
 						'checkpoint aggregate add';
@@ -3368,7 +3368,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 		// Contributed by Erik Peterson.
 	
 		var keywords =	'alias and BEGIN begin break case class def define_method defined do each else elsif ' +
-						'END end ensure false for if in module new next nil not or raise redo rescue retry return ' +
+						'END end ensure false for if in module news next nil not or raise redo rescue retry return ' +
 						'self super then throw true undef unless until when while yield';
 
 		var builtins =	'Array Bignum Binding Class Continuation Dir Exception FalseClass File::Stat File Fixnum Fload ' +
@@ -3485,7 +3485,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 		// Contributed by Yegor Jbanov and David Bernard.
 	
 		var keywords =	'val sealed case def true trait implicit forSome import match object null finally super ' +
-						'override try lazy for var catch throw type extends class while with new final yield abstract ' +
+						'override try lazy for var catch throw type extends class while with news final yield abstract ' +
 						'else do if return protected private this package false';
 
 		var keyops =	'[_:=><%#@]+';

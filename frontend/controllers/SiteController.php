@@ -2,6 +2,7 @@
 namespace frontend\controllers;
 
 use common\models\CatModel;
+use common\models\PostModel;
 use common\models\ShareUrls;
 use Yii;
 use yii\base\InvalidParamException;
@@ -81,12 +82,22 @@ class SiteController extends BaseController
         $cats = CatModel::getAllCats();
         $res = array();
         foreach ($cats as $k => $v){
-            $res[$v] = ShareUrls::find()->where(['cat_id'=>$k])->asArray()->all();
+            if($k != 4){
+                $res[$v] = ShareUrls::find()
+                    ->where(['cat_id'=>$k])
+                    ->orderBy('views_num DESC')
+                    ->asArray()
+                    ->all();
+            }else{
+                continue;
+            }
+
         }
-        print_r($res);
+
         return $this->render('index',[
                 'handle' => $handle,
-                'data' => $res
+                'data' => $res,
+                'model' => new PostModel()
             ]);
     }
 
