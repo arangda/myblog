@@ -2,10 +2,10 @@
 use frontend\widgets\banner\BannerWidget;
 use frontend\widgets\post\PostWidget;
 use frontend\widgets\chat\ChatWidget;
-use frontend\widgets\good\goodWidget;
-use frontend\widgets\better\betterWidget;
+use frontend\widgets\good\GoodWidget;
+use frontend\widgets\better\BetterWidget;
 use frontend\widgets\news\NewsWidget;
-use frontend\widgets\hot\hotWidget;
+use frontend\widgets\hot\HotWidget;
 use frontend\widgets\tag\TagWidget;
 use frontend\widgets\classify\ClassifyWidget;
 use yii\helpers\Url;
