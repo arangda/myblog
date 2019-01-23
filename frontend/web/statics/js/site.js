@@ -58,3 +58,12 @@ $(function () {
 //    })
 
 });
+
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?ab06641cb1c141901e538917bd292995";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+
